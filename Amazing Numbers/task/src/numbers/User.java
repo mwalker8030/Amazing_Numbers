@@ -6,6 +6,7 @@ public class User {
     private StringBuilder input;
     User(){
         scan = new Scanner(System.in);
+        input = new StringBuilder();
     }
 
     public void getUserInput(){
@@ -18,13 +19,13 @@ public class User {
                     throw new UserInputException("This number is not natural!");
                 }
             }
-        }catch (Exception ex){
+        }catch (UserInputException ex){
                 System.out.println(ex.getMessage());
         }
 
     }
 
-    public int getStoreInput(){
+    public int getStoredInput(){
         return Integer.getInteger(input.toString());
     }
 
