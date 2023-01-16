@@ -4,13 +4,16 @@ import java.util.Scanner;
 public class User {
     private Scanner scan;
     private StringBuilder input;
+    private int value;
     User(){
         scan = new Scanner(System.in);
         input = new StringBuilder();
+        value = 0;
     }
 
     public void getUserInput(){
         try {
+            System.out.println("Enter a natural number:");
             input.append(scan.nextLine());
 
             for (char d : input.toString().toCharArray()) {
@@ -19,14 +22,27 @@ public class User {
                     throw new UserInputException("This number is not natural!");
                 }
             }
+
+            value = Integer.parseInt(input.toString());
+            if(!isValid()){
+                throw new UserInputException("This number is not natural!");
+            }
         }catch (UserInputException ex){
-                System.out.println(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
 
+
+
     }
 
-    public int getStoredInput(){
-        return Integer.getInteger(input.toString());
+    private boolean isValid() {
+        if(value > 0){
+            return true;
+        }
+        return false;
     }
+
+
+    public int getStoredValue(){ return value;}
 
 }

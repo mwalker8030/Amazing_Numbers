@@ -8,7 +8,7 @@ public class Main {
         //ask the user to enter a value
         user.getUserInput();
         //find the magic number
-        detector.detectMagic(user.getStoredInput());
+        detector.detectMagic(user.getStoredValue());
 
     }
 }
