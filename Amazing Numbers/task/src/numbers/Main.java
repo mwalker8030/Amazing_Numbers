@@ -6,6 +6,6 @@ public class Main {
         User user = new User();
         //ask the user to enter a value
         user.getUserInput();
-
+        //find the magic number
     }
 }
