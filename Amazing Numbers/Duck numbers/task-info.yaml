@@ -433,9 +433,12 @@ files:
 - name: src/numbers/OddDetector.java
   visible: true
   learner_created: true
+- name: test/BuzzChecker.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13199#comment
 status: Solved
 feedback:
   message: Congratulations!
   time: "Mon, 16 Jan 2023 14:35:36 UTC"
-record: -1
+record: 2

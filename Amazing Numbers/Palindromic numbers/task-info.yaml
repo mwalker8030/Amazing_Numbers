@@ -382,6 +382,192 @@ files:
         }
     }
   learner_created: false
+- name: src/numbers/MagicDetector.java
+  visible: true
+  text: "package numbers;\n\npublic class MagicDetector{\n    private boolean[] isMagic;\n\
+    \    private int MAGICNUM;\n    private StringBuilder msg;\n\n    MagicDetector(){\n\
+    \        isMagic = new boolean[]{false, false};\n        MAGICNUM = 7;\n     \
+    \   msg = new StringBuilder();\n    }\n\n    public boolean detectMagic(int num){\n\
+    \        if(num % MAGICNUM == 0){\n            //magic number is detected\n  \
+    \          isMagic[0] = true;\n        }else if(magicCalculated(num)){\n     \
+    \       isMagic[0] = true;\n        }\n\n        if(num % 10 == MAGICNUM){\n \
+    \           isMagic[1] = true;\n        }\n\n        return finalAnalysis(num);\n\
+    \    }\n\n    private boolean finalAnalysis(int num) {\n\n        if (isMagic[0]\
+    \ || isMagic[1]){\n            return true;\n        }\n\n        return false;\n\
+    \    }\n\n    private boolean magicCalculated(int num) {\n        int remainder\
+    \ = 0, diff = 0, temp = num;\n        do{\n            //take last number\n  \
+    \          remainder = temp % 10;\n            temp /= 10;\n            //multiply\
+    \ it by 2\n            remainder *= 2;\n            //subtract whatever was left\
+    \ over by result\n            temp -= remainder;\n            //if result is not\
+    \ 7 or less\n            if(temp%MAGICNUM == 0){\n                return true;\n\
+    \            }\n\n        }while(temp > 10);\n        return false;\n    }\n \
+    \   \n    \n\n\n}\n"
+  learner_created: true
+- name: src/numbers/OddDetector.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class OddDetector{
+        private boolean isOdd;
+
+        OddDetector(){
+            isOdd = false;
+        }
+
+        public boolean evenOrOdd(int num){
+            return num % 2 != 0;
+        }
+    }
+  learner_created: true
+- name: src/numbers/DuckDetector.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class DuckDetector {
+        private boolean isDuck;
+        private int temp, duck;
+
+        DuckDetector(){temp = 0; duck = 0;}
+
+        public boolean detectDucking(int num) {
+            temp = num;
+            while(temp > 0){
+                duck = temp % 10;
+                temp /= 10;
+                if(duck == 0){return true;}
+            }
+            return false;
+        }
+    }
+  learner_created: true
+- name: src/numbers/Property.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class Property {
+        private String category;
+        private boolean data;
+        Property(String str, boolean b){
+            this.category = str;
+            this.data = b;
+        }
+
+        protected String getCategory(){ return category; }
+
+        protected boolean getData(){ return data; }
+    }
+  learner_created: true
+- name: src/numbers/UserInputException.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class UserInputException extends Exception{
+        UserInputException(String e){
+            super(e);
+        }
+    }
+  learner_created: true
+- name: src/numbers/User.java
+  visible: true
+  text: |
+    package numbers;
+    import java.util.Scanner;
+
+    public class User {
+        private Scanner scan;
+        private StringBuilder input;
+        private int value;
+        User(){
+            scan = new Scanner(System.in);
+            input = new StringBuilder();
+            value = 0;
+        }
+
+        public void getUserInput(){
+            try {
+                System.out.println("Enter a natural number:");
+                input.append(scan.nextLine());
+
+                for (char d : input.toString().toCharArray()) {
+                    if (d < '0' || d > '9') {
+                        //throw some error
+                        throw new UserInputException("This number is not natural!");
+                    }
+                }
+
+                value = Integer.parseInt(input.toString());
+                if(!isValid()){
+                    throw new UserInputException("This number is not natural!");
+                }
+            }catch (UserInputException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+
+        private boolean isValid() { return value > 0; }
+
+        public int getStoredValue(){ return value;}
+
+    }
+  learner_created: true
+- name: src/numbers/Properties.java
+  visible: true
+  text: |
+    package numbers;
+
+    import java.util.ArrayList;
+
+    public class Properties {
+        private boolean[] analysis;
+        private String[] attributes;
+        private ArrayList<Property> detailedList;
+        private int storedValue;
+        private StringBuilder msg;
+
+        private OddDetector oddDetective;
+        private MagicDetector mageDetective;
+        private DuckDetector duckDetective;
+
+        Properties(int num){
+
+            oddDetective = new OddDetector();
+            mageDetective = new MagicDetector();
+            duckDetective = new DuckDetector();
+
+            msg = new StringBuilder("Properties of %d\n" .formatted(num));
+            this.storedValue = num;
+
+            attributes = new String[]{"even","odd","buzz","duck"};
+            analysis = new boolean[]{
+                    !oddDetective.evenOrOdd(storedValue),
+                    oddDetective.evenOrOdd(storedValue),
+                    mageDetective.detectMagic(storedValue),
+                    duckDetective.detectDucking(storedValue),
+            };
+
+            detailedList = new ArrayList<Property>();
+            for(int i = 0; i < attributes.length; i++)
+                detailedList.add(new Property(attributes[i], analysis[i]));
+
+            printProperties();
+        }
+
+        private void printProperties() {
+            for(Property prop : detailedList){
+                msg.append("%16.16s: %b\n" .formatted(prop.getCategory(), prop.getData()));
+            }
+            System.out.println(msg.toString());
+        }
+
+        protected int getStoredValue(){
+            return this.storedValue;
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13200#comment
 status: Unchecked
 record: -1
