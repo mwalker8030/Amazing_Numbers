@@ -313,6 +313,15 @@ files:
 
     }
   learner_created: false
-feedback_link: https://hyperskill.org/projects/184/stages/931/implement#comment
+- name: src/numbers/User.java
+  visible: true
+  learner_created: true
+- name: src/numbers/UserInputException.java
+  visible: true
+  learner_created: true
+- name: src/numbers/MagicDetector.java
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/13198#comment
 status: Unchecked
 record: -1
