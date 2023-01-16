@@ -11,8 +11,7 @@ public class MagicDetector{
         msg = new StringBuilder();
     }
 
-    public void detectMagic(int num){
-        detectEvenOrOdd(num);
+    public boolean detectMagic(int num){
         if(num % MAGICNUM == 0){
             //magic number is detected
             isMagic[0] = true;
@@ -24,31 +23,16 @@ public class MagicDetector{
             isMagic[1] = true;
         }
 
-        finalAnalysis(num);
+        return finalAnalysis(num);
     }
 
-    private void finalAnalysis(int num) {
-        msg.append("It is ");
-        if(!isMagic[0] && !isMagic[1]){
-            msg.append("not ");
+    private boolean finalAnalysis(int num) {
+
+        if (isMagic[0] || isMagic[1]){
+            return true;
         }
-        msg.append("a Buzz number.\nExplanation:\n");
 
-        if(isMagic[0] && isMagic[1]){ msg.append("%d is divisible by 7 and ends with 7." .formatted(num));}
-        else if (isMagic[0]) { msg.append("%d is divisible by 7." .formatted(num));}
-        else if (isMagic[1]) { msg.append("%d ends with 7." .formatted(num));}
-        else{ msg.append("%d is neither divisible by 7 nor does it end with 7." .formatted(num));}
-
-        System.out.println(msg.toString());
-    }
-
-    private void detectEvenOrOdd(int num) {
-        msg.append("This number is ");
-        if(num % 2 == 0){
-            msg.append("Even.\n");
-        }else{
-            msg.append("Odd.\n");
-        }
+        return false;
     }
 
     private boolean magicCalculated(int num) {

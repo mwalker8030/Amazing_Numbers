@@ -30,18 +30,9 @@ public class User {
         }catch (UserInputException ex){
             System.out.println(ex.getMessage());
         }
-
-
-
     }
 
-    private boolean isValid() {
-        if(value > 0){
-            return true;
-        }
-        return false;
-    }
-
+    private boolean isValid() { return value > 0; }
 
     public int getStoredValue(){ return value;}
 
