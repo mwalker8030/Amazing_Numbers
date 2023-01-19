@@ -12,19 +12,20 @@ public class Properties {
     private OddDetector oddDetective;
     private MagicDetector mageDetective;
     private DuckDetector duckDetective;
-
-    private Palindrome palidetective;
+    private Palindrome paliDetective;
+    private GapDetector gapDetective;
 
     interface Detective{
 
         boolean detect();
     }
     private Detective[] detectives = new Detective[]{
-            new Detective(){ public boolean detect(){return !oddDetective.evenOrOdd(storedValue);}},
-            new Detective(){ public boolean detect(){return oddDetective.evenOrOdd(storedValue);}},
             new Detective(){ public boolean detect(){return mageDetective.detectMagic(storedValue);}},
             new Detective(){ public boolean detect(){return duckDetective.detectDucking(storedValue);}},
-            new Detective(){ public boolean detect(){return palidetective.detectPalindrome(storedValue);}}
+            new Detective(){ public boolean detect(){return paliDetective.detectPalindrome(storedValue);}},
+            new Detective(){ public boolean detect(){return gapDetective.detectGap(storedValue);}},
+            new Detective(){ public boolean detect(){return !oddDetective.evenOrOdd(storedValue);}},
+            new Detective(){ public boolean detect(){return oddDetective.evenOrOdd(storedValue);}}
 
     };
 
@@ -36,7 +37,14 @@ public class Properties {
     }
     private void initAttributes() {
         attributes = new ArrayList<String>(
-                Arrays.asList("even", "odd", "buzz", "duck", "palindromic")
+                Arrays.asList(
+                        "buzz",
+                        "duck",
+                        "palindromic",
+                        "gapful",
+                        "even",
+                        "odd"
+                )
         );
     }
 
@@ -51,7 +59,8 @@ public class Properties {
         oddDetective = new OddDetector();
         mageDetective = new MagicDetector();
         duckDetective = new DuckDetector();
-        palidetective = new Palindrome();
+        paliDetective = new Palindrome();
+        gapDetective = new GapDetector();
     }
     public void analyze(long num){
 
