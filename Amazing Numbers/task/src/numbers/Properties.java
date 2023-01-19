@@ -1,40 +1,66 @@
 package numbers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Properties {
-    private boolean[] analysis;
-    private String[] attributes;
+    private ArrayList<String> attributes;
     private ArrayList<Property> detailedList;
-    private int storedValue;
+    private long storedValue;
     private StringBuilder msg;
 
     private OddDetector oddDetective;
     private MagicDetector mageDetective;
     private DuckDetector duckDetective;
 
-    Properties(int num){
+    private Palindrome palidetective;
 
+    interface Detective{
+
+        boolean detect();
+    }
+    private Detective[] detectives = new Detective[]{
+            new Detective(){ public boolean detect(){return !oddDetective.evenOrOdd(storedValue);}},
+            new Detective(){ public boolean detect(){return oddDetective.evenOrOdd(storedValue);}},
+            new Detective(){ public boolean detect(){return mageDetective.detectMagic(storedValue);}},
+            new Detective(){ public boolean detect(){return duckDetective.detectDucking(storedValue);}},
+            new Detective(){ public boolean detect(){return palidetective.detectPalindrome(storedValue);}}
+
+    };
+
+    Properties(){
+        initAttributes();
+        initDetectives();
+        initList();
+        this.storedValue = 0;
+    }
+    private void initAttributes() {
+        attributes = new ArrayList<String>(
+                Arrays.asList("even", "odd", "buzz", "duck", "palindromic")
+        );
+    }
+
+    private void initList(){
+        detailedList = new ArrayList<Property>();
+        while(detailedList.size() < attributes.size()){
+            detailedList.add(new Property());
+        }
+    }
+
+    private void initDetectives(){
         oddDetective = new OddDetector();
         mageDetective = new MagicDetector();
         duckDetective = new DuckDetector();
+        palidetective = new Palindrome();
+    }
+    public void analyze(long num){
 
-        msg = new StringBuilder("Properties of %d\n" .formatted(num));
-        this.storedValue = num;
+        msg = new StringBuilder("Properties of %,d\n" .formatted(num));
 
-        attributes = new String[]{"even","odd","buzz","duck"};
-        analysis = new boolean[]{
-                !oddDetective.evenOrOdd(storedValue),
-                oddDetective.evenOrOdd(storedValue),
-                mageDetective.detectMagic(storedValue),
-                duckDetective.detectDucking(storedValue),
-        };
-
-        detailedList = new ArrayList<Property>();
-        for(int i = 0; i < attributes.length; i++)
-            detailedList.add(new Property(attributes[i], analysis[i]));
-
+        for(int i = 0; i < attributes.size(); i++)
+            detailedList.set(i, new Property(attributes.get(i),detectives[i].detect()));
         printProperties();
+        resetList();
     }
 
     private void printProperties() {
@@ -44,7 +70,9 @@ public class Properties {
         System.out.println(msg.toString());
     }
 
-    protected int getStoredValue(){
-        return this.storedValue;
+    private void resetList(){
+        for(int i = 0; i < attributes.size(); i++)
+            detailedList.get(i).setData(false);
     }
+    public void storeUserInput(long storedValue) { this.storedValue = storedValue; }
 }

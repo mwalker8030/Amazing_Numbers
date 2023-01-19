@@ -2,7 +2,7 @@ package numbers;
 
 public class MagicDetector{
     private boolean[] isMagic;
-    private int MAGICNUM;
+    private long MAGICNUM;
     private StringBuilder msg;
 
     MagicDetector(){
@@ -11,7 +11,8 @@ public class MagicDetector{
         msg = new StringBuilder();
     }
 
-    public boolean detectMagic(int num){
+    public boolean detectMagic(long num){
+        resetMagic();
         if(num % MAGICNUM == 0){
             //magic number is detected
             isMagic[0] = true;
@@ -26,7 +27,12 @@ public class MagicDetector{
         return finalAnalysis(num);
     }
 
-    private boolean finalAnalysis(int num) {
+    private void resetMagic() {
+        isMagic[0] = false;
+        isMagic[1] = false;
+    }
+
+    private boolean finalAnalysis(long num) {
 
         if (isMagic[0] || isMagic[1]){
             return true;
@@ -35,12 +41,12 @@ public class MagicDetector{
         return false;
     }
 
-    private boolean magicCalculated(int num) {
-        int remainder = 0, diff = 0, temp = num;
+    private boolean magicCalculated(long num) {
+        long remainder = 0, diff = 0, temp = num;
         do{
             //take last number
             remainder = temp % 10;
-            temp /= 10;
+            temp /= 10.0;
             //multiply it by 2
             remainder *= 2;
             //subtract whatever was left over by result

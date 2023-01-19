@@ -7,7 +7,7 @@ public class OddDetector{
         isOdd = false;
     }
 
-    public boolean evenOrOdd(int num){
+    public boolean evenOrOdd(long num){
         return num % 2 != 0;
     }
 }
