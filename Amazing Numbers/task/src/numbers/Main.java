@@ -9,14 +9,24 @@ public class Main {
         while(true){
             //ask the user to enter a value
             user.getUserInput();
-            if(user.getStoredValue() == 0){
+            //for each input from user
+                //get stored value
+            if( user.getValueList().size() == 1 && user.getStoredValue(0) == 0){
                 System.out.print("\nGoodbye!");
                 break;}
-            //find the properties of the number
-            if(user.isValid() && user.getStoredValue() > 0){
-                analysis.storeUserInput(user.getStoredValue());
-                analysis.analyze(user.getStoredValue());
+
+            analysis.setPrinter(user.getValueList().size());
+            for(Long val : user.getValueList()){
+                if(user.isValid(val)){
+                    analysis.storeUserInput(val);
+                    analysis.analyze(val);
+                    analysis.incrementSequence();
+                }
             }
+            //print findings of all numbers
+            analysis.displayProperties();
+            //reset the counter of properties analyzed
+            analysis.resetSequenceAndPrinter();
         }
     }
 }

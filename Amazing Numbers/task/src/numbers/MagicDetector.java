@@ -16,9 +16,10 @@ public class MagicDetector{
         if(num % MAGICNUM == 0){
             //magic number is detected
             isMagic[0] = true;
-        }else if(magicCalculated(num)){
-            isMagic[0] = true;
         }
+        //else if(magicCalculated(num)){
+        //    isMagic[0] = true;
+        //}
 
         if(num % 10 == MAGICNUM){
             isMagic[1] = true;

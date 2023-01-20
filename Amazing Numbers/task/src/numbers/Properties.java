@@ -4,6 +4,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Properties {
+
+    public enum Printer{
+        SINGLE(1),
+        MULTI(2);
+
+        public final int printerType;
+        private Printer(int printerType){
+            this.printerType = printerType;
+        }
+    }
+
+    private Printer printer;
     private ArrayList<String> attributes;
     private ArrayList<Property> detailedList;
     private long storedValue;
@@ -14,6 +26,22 @@ public class Properties {
     private DuckDetector duckDetective;
     private Palindrome paliDetective;
     private GapDetector gapDetective;
+    private int sequenceCounter;
+
+    public void resetSequenceAndPrinter() {
+        sequenceCounter = 0;
+        msg.setLength(0);
+        printer = Printer.SINGLE;
+    }
+
+    public void incrementSequence() { ++sequenceCounter; }
+
+    public void setPrinter(int size) {
+        if(size > printer.printerType){
+            printer = Printer.MULTI;
+        }
+    }
+
 
     interface Detective{
 
@@ -30,10 +58,13 @@ public class Properties {
     };
 
     Properties(){
+        msg = new StringBuilder("");
         initAttributes();
         initDetectives();
         initList();
         this.storedValue = 0;
+        this.sequenceCounter = 0;
+        printer = Printer.SINGLE;
     }
     private void initAttributes() {
         attributes = new ArrayList<String>(
@@ -64,19 +95,48 @@ public class Properties {
     }
     public void analyze(long num){
 
-        msg = new StringBuilder("Properties of %,d\n" .formatted(num));
 
         for(int i = 0; i < attributes.size(); i++)
             detailedList.set(i, new Property(attributes.get(i),detectives[i].detect()));
-        printProperties();
+
+        if(printer == Printer.SINGLE)
+            saveProperties();
+        else
+            saveListOfProperties();
         resetList();
     }
 
-    private void printProperties() {
+    public void analyzeList(long num){
+
+        msg = new StringBuilder();
+
+        for(int i = 0; i < attributes.size(); i++)
+            detailedList.set(i, new Property(attributes.get(i),detectives[i].detect()));
+        saveListOfProperties();
+    }
+
+    private void saveProperties() {
+        msg.append("\nProperties of %,d\n" .formatted(storedValue));
         for(Property prop : detailedList){
             msg.append("%16.16s: %b\n" .formatted(prop.getCategory(), prop.getData()));
         }
-        System.out.println(msg.toString());
+        msg.setLength(msg.length() - 1);
+    }
+
+    private void saveListOfProperties() {
+        msg.append("\n%,16d is ".formatted(storedValue));
+        for(Property prop : detailedList){
+            if(prop.getData()){
+                msg.append("%s, " .formatted(prop.getCategory()));
+            }
+        }
+
+        //remove the last comma
+        msg.setLength(msg.length() - 2);
+    }
+
+    public void displayProperties() {
+        System.out.println(msg.toString() + "\n");
     }
 
     private void resetList(){
