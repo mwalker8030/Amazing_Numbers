@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="NumbersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-20T19:16:30" hostname="LAPTOP-S0CKKHT9" time="0.801">
+<testsuite name="NumbersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-20T19:23:57" hostname="LAPTOP-S0CKKHT9" time="0.828">
   <properties/>
-  <testcase name="start" classname="NumbersTest" time="0.801"/>
+  <testcase name="start" classname="NumbersTest" time="0.828"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 Welcome to Amazing Numbers!
@@ -28,7 +28,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> -113
+Enter a request:> -9
 
 The first parameter should be a natural number or zero.
 
@@ -48,7 +48,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> -113
+Enter a request:> -2
 
 The first parameter should be a natural number or zero.
 
@@ -68,7 +68,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> -13
+Enter a request:> -85
 
 The first parameter should be a natural number or zero.
 
@@ -88,7 +88,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> -31
+Enter a request:> -87
 
 The first parameter should be a natural number or zero.
 
@@ -108,7 +108,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> -98
+Enter a request:> -126
 
 The first parameter should be a natural number or zero.
 
@@ -128,7 +128,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 15487 -28007
+Enter a request:> 27465 -10854
 
 second parameter should be a natural number
 
@@ -148,7 +148,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 7784 -17642
+Enter a request:> 23729 -16792
 
 second parameter should be a natural number
 
@@ -168,7 +168,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 442 -22
+Enter a request:> 12133 -11506
 
 second parameter should be a natural number
 
@@ -188,7 +188,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 9971 -15778
+Enter a request:> 5341 -11989
 
 second parameter should be a natural number
 
@@ -208,7 +208,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 16599 -15913
+Enter a request:> 32450 -13970
 
 second parameter should be a natural number
 
@@ -228,7 +228,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 5561 -30230
+Enter a request:> 6127 -30472
 
 second parameter should be a natural number
 
@@ -248,7 +248,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 7131 -4253
+Enter a request:> 24756 -9620
 
 second parameter should be a natural number
 
@@ -268,7 +268,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 4021 -14884
+Enter a request:> 19529 -17565
 
 second parameter should be a natural number
 
@@ -288,7 +288,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 30984 -19566
+Enter a request:> 13285 -3104
 
 second parameter should be a natural number
 
@@ -308,7 +308,7 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 28551 -27695
+Enter a request:> 30338 -7224
 
 second parameter should be a natural number
 
@@ -468,29 +468,19 @@ Properties of 14
             even: true
              odd: false
 
-Enter a request:> 9201476926649773477
+Enter a request:> 7194517435121693333
 
-Properties of 9,201,476,926,649,773,477
-            buzz: true
-            duck: true
+Properties of 7,194,517,435,121,693,333
+            buzz: false
+            duck: false
      palindromic: false
           gapful: false
             even: false
              odd: true
 
-Enter a request:> 261707508701085787
+Enter a request:> 545021910088418753
 
-Properties of 261,707,508,701,085,787
-            buzz: true
-            duck: true
-     palindromic: false
-          gapful: false
-            even: false
-             odd: true
-
-Enter a request:> 6472010699159285389
-
-Properties of 6,472,010,699,159,285,389
+Properties of 545,021,910,088,418,753
             buzz: false
             duck: true
      palindromic: false
@@ -498,19 +488,9 @@ Properties of 6,472,010,699,159,285,389
             even: false
              odd: true
 
-Enter a request:> 2295304934840568193
+Enter a request:> 5969604857881468547
 
-Properties of 2,295,304,934,840,568,193
-            buzz: false
-            duck: true
-     palindromic: false
-          gapful: false
-            even: false
-             odd: true
-
-Enter a request:> 2882226788467707297
-
-Properties of 2,882,226,788,467,707,297
+Properties of 5,969,604,857,881,468,547
             buzz: true
             duck: true
      palindromic: false
@@ -518,19 +498,19 @@ Properties of 2,882,226,788,467,707,297
             even: false
              odd: true
 
-Enter a request:> 6382588376400099391
+Enter a request:> 9196997019788165767
 
-Properties of 6,382,588,376,400,099,391
-            buzz: false
+Properties of 9,196,997,019,788,165,767
+            buzz: true
             duck: true
      palindromic: false
           gapful: false
             even: false
              odd: true
 
-Enter a request:> 5917519023838068042
+Enter a request:> 2718573133270933692
 
-Properties of 5,917,519,023,838,068,042
+Properties of 2,718,573,133,270,933,692
             buzz: false
             duck: true
      palindromic: false
@@ -538,19 +518,29 @@ Properties of 5,917,519,023,838,068,042
             even: true
              odd: false
 
-Enter a request:> 4750760152840342509
+Enter a request:> 3646641493677152351
 
-Properties of 4,750,760,152,840,342,509
+Properties of 3,646,641,493,677,152,351
             buzz: false
-            duck: true
+            duck: false
      palindromic: false
-          gapful: false
+          gapful: true
             even: false
              odd: true
 
-Enter a request:> 2088914095541903090
+Enter a request:> 5999147129252549758
 
-Properties of 2,088,914,095,541,903,090
+Properties of 5,999,147,129,252,549,758
+            buzz: false
+            duck: false
+     palindromic: false
+          gapful: false
+            even: true
+             odd: false
+
+Enter a request:> 7056085228672560004
+
+Properties of 7,056,085,228,672,560,004
             buzz: false
             duck: true
      palindromic: false
@@ -558,10 +548,20 @@ Properties of 2,088,914,095,541,903,090
             even: true
              odd: false
 
-Enter a request:> 4802583934205010178
+Enter a request:> 4145224439294004888
 
-Properties of 4,802,583,934,205,010,178
+Properties of 4,145,224,439,294,004,888
             buzz: false
+            duck: true
+     palindromic: false
+          gapful: false
+            even: true
+             odd: false
+
+Enter a request:> 5337129110021545354
+
+Properties of 5,337,129,110,021,545,354
+            buzz: true
             duck: true
      palindromic: false
           gapful: false
@@ -614,12 +614,18 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 6368504730339037366 4
+Enter a request:> 649082919890390103 10
 
-6,368,504,730,339,037,366 is duck, even
-6,368,504,730,339,037,367 is buzz, duck, odd
-6,368,504,730,339,037,368 is duck, even
-6,368,504,730,339,037,369 is duck, odd
+649,082,919,890,390,103 is duck, odd
+649,082,919,890,390,104 is buzz, duck, even
+649,082,919,890,390,105 is duck, odd
+649,082,919,890,390,106 is duck, gapful, even
+649,082,919,890,390,107 is buzz, duck, odd
+649,082,919,890,390,108 is duck, even
+649,082,919,890,390,109 is duck, gapful, odd
+649,082,919,890,390,110 is duck, even
+649,082,919,890,390,111 is buzz, duck, odd
+649,082,919,890,390,112 is duck, even
 
 Enter a request:> 0
 
@@ -635,10 +641,18 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 6358262389815750532 2
+Enter a request:> 7346306114811118862 10
 
-6,358,262,389,815,750,532 is duck, even
-6,358,262,389,815,750,533 is buzz, duck, odd
+7,346,306,114,811,118,862 is duck, even
+7,346,306,114,811,118,863 is duck, odd
+7,346,306,114,811,118,864 is duck, even
+7,346,306,114,811,118,865 is duck, odd
+7,346,306,114,811,118,866 is duck, even
+7,346,306,114,811,118,867 is buzz, duck, odd
+7,346,306,114,811,118,868 is buzz, duck, even
+7,346,306,114,811,118,869 is duck, odd
+7,346,306,114,811,118,870 is duck, even
+7,346,306,114,811,118,871 is duck, odd
 
 Enter a request:> 0
 
@@ -654,10 +668,20 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 7930826543279033896 2
+Enter a request:> 3136484648491533518 12
 
-7,930,826,543,279,033,896 is duck, even
-7,930,826,543,279,033,897 is buzz, duck, odd
+3,136,484,648,491,533,518 is even
+3,136,484,648,491,533,519 is odd
+3,136,484,648,491,533,520 is duck, even
+3,136,484,648,491,533,521 is buzz, odd
+3,136,484,648,491,533,522 is even
+3,136,484,648,491,533,523 is odd
+3,136,484,648,491,533,524 is even
+3,136,484,648,491,533,525 is odd
+3,136,484,648,491,533,526 is even
+3,136,484,648,491,533,527 is buzz, odd
+3,136,484,648,491,533,528 is buzz, even
+3,136,484,648,491,533,529 is odd
 
 Enter a request:> 0
 
@@ -673,14 +697,26 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 3099587368180535862 6
+Enter a request:> 8788544256544925360 18
 
-3,099,587,368,180,535,862 is buzz, duck, even
-3,099,587,368,180,535,863 is duck, odd
-3,099,587,368,180,535,864 is duck, even
-3,099,587,368,180,535,865 is duck, odd
-3,099,587,368,180,535,866 is duck, even
-3,099,587,368,180,535,867 is buzz, duck, odd
+8,788,544,256,544,925,360 is duck, gapful, even
+8,788,544,256,544,925,361 is odd
+8,788,544,256,544,925,362 is buzz, even
+8,788,544,256,544,925,363 is odd
+8,788,544,256,544,925,364 is even
+8,788,544,256,544,925,365 is odd
+8,788,544,256,544,925,366 is even
+8,788,544,256,544,925,367 is buzz, odd
+8,788,544,256,544,925,368 is even
+8,788,544,256,544,925,369 is buzz, odd
+8,788,544,256,544,925,370 is duck, even
+8,788,544,256,544,925,371 is odd
+8,788,544,256,544,925,372 is even
+8,788,544,256,544,925,373 is odd
+8,788,544,256,544,925,374 is even
+8,788,544,256,544,925,375 is odd
+8,788,544,256,544,925,376 is buzz, even
+8,788,544,256,544,925,377 is buzz, odd
 
 Enter a request:> 0
 
@@ -696,16 +732,20 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 7422808959612084600 8
+Enter a request:> 4625148970708417555 12
 
-7,422,808,959,612,084,600 is duck, even
-7,422,808,959,612,084,601 is duck, odd
-7,422,808,959,612,084,602 is duck, even
-7,422,808,959,612,084,603 is duck, odd
-7,422,808,959,612,084,604 is duck, even
-7,422,808,959,612,084,605 is buzz, duck, odd
-7,422,808,959,612,084,606 is duck, even
-7,422,808,959,612,084,607 is buzz, duck, odd
+4,625,148,970,708,417,555 is duck, odd
+4,625,148,970,708,417,556 is duck, even
+4,625,148,970,708,417,557 is buzz, duck, odd
+4,625,148,970,708,417,558 is duck, even
+4,625,148,970,708,417,559 is duck, odd
+4,625,148,970,708,417,560 is duck, gapful, even
+4,625,148,970,708,417,561 is duck, odd
+4,625,148,970,708,417,562 is duck, even
+4,625,148,970,708,417,563 is duck, odd
+4,625,148,970,708,417,564 is buzz, duck, even
+4,625,148,970,708,417,565 is duck, odd
+4,625,148,970,708,417,566 is duck, even
 
 Enter a request:> 0
 
@@ -721,14 +761,12 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 8928072414054010212 6
+Enter a request:> 2128900597327584974 4
 
-8,928,072,414,054,010,212 is duck, even
-8,928,072,414,054,010,213 is duck, odd
-8,928,072,414,054,010,214 is duck, even
-8,928,072,414,054,010,215 is duck, odd
-8,928,072,414,054,010,216 is duck, even
-8,928,072,414,054,010,217 is buzz, duck, odd
+2,128,900,597,327,584,974 is duck, even
+2,128,900,597,327,584,975 is duck, gapful, odd
+2,128,900,597,327,584,976 is buzz, duck, even
+2,128,900,597,327,584,977 is buzz, duck, odd
 
 Enter a request:> 0
 
@@ -744,14 +782,13 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 1282551941307204347 6
+Enter a request:> 4005646035481595474 5
 
-1,282,551,941,307,204,347 is buzz, duck, odd
-1,282,551,941,307,204,348 is duck, even
-1,282,551,941,307,204,349 is duck, odd
-1,282,551,941,307,204,350 is duck, gapful, even
-1,282,551,941,307,204,351 is buzz, duck, odd
-1,282,551,941,307,204,352 is duck, even
+4,005,646,035,481,595,474 is duck, even
+4,005,646,035,481,595,475 is duck, gapful, odd
+4,005,646,035,481,595,476 is duck, even
+4,005,646,035,481,595,477 is buzz, duck, odd
+4,005,646,035,481,595,478 is duck, even
 
 Enter a request:> 0
 
@@ -767,19 +804,21 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 3421859558614257308 11
+Enter a request:> 1658441530960200446 13
 
-3,421,859,558,614,257,308 is duck, even
-3,421,859,558,614,257,309 is duck, odd
-3,421,859,558,614,257,310 is duck, even
-3,421,859,558,614,257,311 is odd
-3,421,859,558,614,257,312 is gapful, even
-3,421,859,558,614,257,313 is buzz, odd
-3,421,859,558,614,257,314 is even
-3,421,859,558,614,257,315 is odd
-3,421,859,558,614,257,316 is even
-3,421,859,558,614,257,317 is buzz, odd
-3,421,859,558,614,257,318 is even
+1,658,441,530,960,200,446 is duck, even
+1,658,441,530,960,200,447 is buzz, duck, odd
+1,658,441,530,960,200,448 is buzz, duck, even
+1,658,441,530,960,200,449 is duck, odd
+1,658,441,530,960,200,450 is duck, gapful, even
+1,658,441,530,960,200,451 is duck, odd
+1,658,441,530,960,200,452 is duck, even
+1,658,441,530,960,200,453 is duck, odd
+1,658,441,530,960,200,454 is duck, even
+1,658,441,530,960,200,455 is buzz, duck, odd
+1,658,441,530,960,200,456 is duck, even
+1,658,441,530,960,200,457 is buzz, duck, odd
+1,658,441,530,960,200,458 is duck, even
 
 Enter a request:> 0
 
@@ -795,13 +834,16 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 1757781299000809558 5
+Enter a request:> 8151197697818176371 8
 
-1,757,781,299,000,809,558 is buzz, duck, even
-1,757,781,299,000,809,559 is duck, odd
-1,757,781,299,000,809,560 is duck, gapful, even
-1,757,781,299,000,809,561 is duck, odd
-1,757,781,299,000,809,562 is duck, even
+8,151,197,697,818,176,371 is odd
+8,151,197,697,818,176,372 is buzz, even
+8,151,197,697,818,176,373 is odd
+8,151,197,697,818,176,374 is even
+8,151,197,697,818,176,375 is odd
+8,151,197,697,818,176,376 is even
+8,151,197,697,818,176,377 is buzz, odd
+8,151,197,697,818,176,378 is even
 
 Enter a request:> 0
 
@@ -817,16 +859,13 @@ Supported requests:
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 7866566526433951118 8
+Enter a request:> 2141870072943903328 5
 
-7,866,566,526,433,951,118 is even
-7,866,566,526,433,951,119 is buzz, odd
-7,866,566,526,433,951,120 is duck, even
-7,866,566,526,433,951,121 is odd
-7,866,566,526,433,951,122 is even
-7,866,566,526,433,951,123 is odd
-7,866,566,526,433,951,124 is even
-7,866,566,526,433,951,125 is gapful, odd
+2,141,870,072,943,903,328 is duck, even
+2,141,870,072,943,903,329 is duck, odd
+2,141,870,072,943,903,330 is buzz, duck, even
+2,141,870,072,943,903,331 is duck, odd
+2,141,870,072,943,903,332 is duck, even
 
 Enter a request:> 0
 

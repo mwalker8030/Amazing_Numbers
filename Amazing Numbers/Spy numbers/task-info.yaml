@@ -689,6 +689,413 @@ files:
         enum Parameter {ONE, TWO, THREE}
     }
   learner_created: false
+- name: src/numbers/MagicDetector.java
+  visible: true
+  text: "package numbers;\n\npublic class MagicDetector{\n    private boolean[] isMagic;\n\
+    \    private long MAGICNUM;\n    private StringBuilder msg;\n\n    MagicDetector(){\n\
+    \        isMagic = new boolean[]{false, false};\n        MAGICNUM = 7;\n     \
+    \   msg = new StringBuilder();\n    }\n\n    public boolean detectMagic(long num){\n\
+    \        resetMagic();\n        if(num % MAGICNUM == 0){\n            //magic\
+    \ number is detected\n            isMagic[0] = true;\n        }\n        //else\
+    \ if(magicCalculated(num)){\n        //    isMagic[0] = true;\n        //}\n\n\
+    \        if(num % 10 == MAGICNUM){\n            isMagic[1] = true;\n        }\n\
+    \n        return finalAnalysis(num);\n    }\n\n    private void resetMagic() {\n\
+    \        isMagic[0] = false;\n        isMagic[1] = false;\n    }\n\n    private\
+    \ boolean finalAnalysis(long num) {\n\n        if (isMagic[0] || isMagic[1]){\n\
+    \            return true;\n        }\n\n        return false;\n    }\n\n    private\
+    \ boolean magicCalculated(long num) {\n        long remainder = 0, diff = 0, temp\
+    \ = num;\n        do{\n            //take last number\n            remainder =\
+    \ temp % 10;\n            temp /= 10.0;\n            //multiply it by 2\n    \
+    \        remainder *= 2;\n            //subtract whatever was left over by result\n\
+    \            temp -= remainder;\n            //if result is not 7 or less\n  \
+    \          if(temp%MAGICNUM == 0){\n                return true;\n           \
+    \ }\n\n        }while(temp > 10);\n        return false;\n    }\n    \n    \n\n\
+    \n}\n"
+  learner_created: true
+- name: src/numbers/OddDetector.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class OddDetector{
+        private boolean isOdd;
+
+        OddDetector(){
+            isOdd = false;
+        }
+
+        public boolean evenOrOdd(long num){
+            return num % 2 != 0;
+        }
+    }
+  learner_created: true
+- name: src/numbers/DuckDetector.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class DuckDetector {
+        private boolean isDuck;
+        private long temp;
+        private long duck;
+
+        DuckDetector(){temp = 0; duck = 0;}
+
+        public boolean detectDucking(long num) {
+            temp = num;
+            while(temp > 0){
+                duck = temp % 10;
+                temp /= 10;
+                if(duck == 0){return true;}
+            }
+            return false;
+        }
+    }
+  learner_created: true
+- name: src/numbers/GapDetector.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class GapDetector {
+        private long divisor;
+
+        GapDetector(){
+            divisor = 10;
+        }
+
+        public boolean detectGap(long num){
+            if(num >= 100){
+                divisor = getDivisor(num);
+                return num % divisor == 0;
+            }
+            return false;
+        }
+
+        private long getDivisor(long num) {
+            long temp = num % 10;
+            long prev = num;
+            while(prev >= 10){
+                prev /= 10;
+            }
+
+            temp += prev * 10;
+            return temp;
+        }
+    }
+  learner_created: true
+- name: src/numbers/Property.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class Property {
+        private String category;
+        private Boolean data;
+        Property(String str, boolean b){
+            this.category = str;
+            this.data = b;
+        }
+
+        public Property() {
+            this.category = "";
+            this.data = null;
+        }
+
+        protected String getCategory(){ return category; }
+
+        protected boolean getData(){ return data; }
+
+        protected void setData(boolean input){data = input;}
+    }
+  learner_created: true
+- name: src/numbers/UserInputException.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class UserInputException extends Exception{
+        UserInputException(String e){
+            super(e);
+        }
+    }
+  learner_created: true
+- name: src/numbers/User.java
+  visible: true
+  text: |
+    package numbers;
+    import java.util.ArrayList;
+    import java.util.Scanner;
+
+    public class User {
+        private Scanner scan;
+        private StringBuilder input;
+        private ArrayList<String> strArr;
+        private long value;
+        private long[] values;
+        private ArrayList<Long> valueList;
+        User(){
+            scan = new Scanner(System.in);
+            input = new StringBuilder();
+            strArr = new ArrayList<String>();
+            value = 0;
+            values = new long[]{0,0};
+            valueList = new ArrayList<Long>();
+            initWelcome();
+        }
+
+        public void getUserInput(){
+            try {
+                input.setLength(0);
+                valueList.clear();
+                System.out.print("Enter a request:");
+                input.append(scan.nextLine());
+                //separate the string into two parts
+                String[] temp = input.toString().split(" ");
+
+                //assign value to index regardless of result
+                values[0] = Long.parseLong(temp[0]);
+                values[1] = 0;
+                //if there are two parts
+                if(temp.length == 2){
+                    //get the sequence amount
+                    values[1] = Long.parseLong(temp[1]);
+                    if(!isValid(values[1])){
+                        throw new UserInputException("\nsecond parameter should be a natural number\n");
+                    }
+                }
+                //assign the values to a temporary storage
+                long tempValue = values[0];
+                do{
+                    //add each sequence to the end of the list
+                    valueList.add(tempValue++);
+                    //until number of sequences reaches 0
+                } while(values[1]-- > 1);
+
+
+                //for(Long v : valueList){ }
+                for (char d : input.toString().toCharArray()) {
+                    if (d < '0' || d > '9') {
+                        //throw some error
+                        if(d != ' ')
+                            throw new UserInputException
+                                    ("\nThe first parameter should be a natural number or zero.\n");
+                    }
+                }
+                for(Long v : valueList){
+                    if(!isValid(v)){
+                        throw new UserInputException
+                                ("\nThe first parameter should be a natural number or zero.\n");
+                    }
+                }
+            }catch (UserInputException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+
+        private void initWelcome() {
+            System.out.println("""
+    Welcome to Amazing Numbers!
+
+    Supported requests:
+    - enter a natural number to know its properties;
+    - enter two natural numbers to obtain the properties of the list:
+      * the first parameter represents a starting number;
+      * the second parameter shows how many consecutive numbers are to be processed;
+    - separate the parameters with one space;
+    - enter 0 to exit.
+                    """);
+        }
+
+        public boolean isValid(Long v) { return v >= 0; }
+
+        public long getStoredValue(){ return this.value;}
+        public Long getStoredValue(int index){ return this.valueList.get(index);}
+        public long getUserEntries(int index){ return this.values[index];}
+
+        public ArrayList<Long> getValueList(){ return this.valueList;}
+
+    }
+  learner_created: true
+- name: src/numbers/Properties.java
+  visible: true
+  text: |
+    package numbers;
+
+    import java.util.ArrayList;
+    import java.util.Arrays;
+
+    public class Properties {
+
+        public enum Printer{
+            SINGLE(1),
+            MULTI(2);
+
+            public final int printerType;
+            private Printer(int printerType){
+                this.printerType = printerType;
+            }
+        }
+
+        private Printer printer;
+        private ArrayList<String> attributes;
+        private ArrayList<Property> detailedList;
+        private long storedValue;
+        private StringBuilder msg;
+
+        private OddDetector oddDetective;
+        private MagicDetector mageDetective;
+        private DuckDetector duckDetective;
+        private Palindrome paliDetective;
+        private GapDetector gapDetective;
+        private int sequenceCounter;
+
+        public void resetSequenceAndPrinter() {
+            sequenceCounter = 0;
+            msg.setLength(0);
+            printer = Printer.SINGLE;
+        }
+
+        public void incrementSequence() { ++sequenceCounter; }
+
+        public void setPrinter(int size) {
+            if(size > printer.printerType){
+                printer = Printer.MULTI;
+            }
+        }
+
+
+        interface Detective{
+
+            boolean detect();
+        }
+        private Detective[] detectives = new Detective[]{
+                new Detective(){ public boolean detect(){return mageDetective.detectMagic(storedValue);}},
+                new Detective(){ public boolean detect(){return duckDetective.detectDucking(storedValue);}},
+                new Detective(){ public boolean detect(){return paliDetective.detectPalindrome(storedValue);}},
+                new Detective(){ public boolean detect(){return gapDetective.detectGap(storedValue);}},
+                new Detective(){ public boolean detect(){return !oddDetective.evenOrOdd(storedValue);}},
+                new Detective(){ public boolean detect(){return oddDetective.evenOrOdd(storedValue);}}
+
+        };
+
+        Properties(){
+            msg = new StringBuilder("");
+            initAttributes();
+            initDetectives();
+            initList();
+            this.storedValue = 0;
+            this.sequenceCounter = 0;
+            printer = Printer.SINGLE;
+        }
+        private void initAttributes() {
+            attributes = new ArrayList<String>(
+                    Arrays.asList(
+                            "buzz",
+                            "duck",
+                            "palindromic",
+                            "gapful",
+                            "even",
+                            "odd"
+                    )
+            );
+        }
+
+        private void initList(){
+            detailedList = new ArrayList<Property>();
+            while(detailedList.size() < attributes.size()){
+                detailedList.add(new Property());
+            }
+        }
+
+        private void initDetectives(){
+            oddDetective = new OddDetector();
+            mageDetective = new MagicDetector();
+            duckDetective = new DuckDetector();
+            paliDetective = new Palindrome();
+            gapDetective = new GapDetector();
+        }
+        public void analyze(long num){
+
+
+            for(int i = 0; i < attributes.size(); i++)
+                detailedList.set(i, new Property(attributes.get(i),detectives[i].detect()));
+
+            if(printer == Printer.SINGLE)
+                saveProperties();
+            else
+                saveListOfProperties();
+            resetList();
+        }
+
+        public void analyzeList(long num){
+
+            msg = new StringBuilder();
+
+            for(int i = 0; i < attributes.size(); i++)
+                detailedList.set(i, new Property(attributes.get(i),detectives[i].detect()));
+            saveListOfProperties();
+        }
+
+        private void saveProperties() {
+            msg.append("\nProperties of %,d\n" .formatted(storedValue));
+            for(Property prop : detailedList){
+                msg.append("%16.16s: %b\n" .formatted(prop.getCategory(), prop.getData()));
+            }
+            msg.setLength(msg.length() - 1);
+        }
+
+        private void saveListOfProperties() {
+            msg.append("\n%,16d is ".formatted(storedValue));
+            for(Property prop : detailedList){
+                if(prop.getData()){
+                    msg.append("%s, " .formatted(prop.getCategory()));
+                }
+            }
+
+            //remove the last comma
+            msg.setLength(msg.length() - 2);
+        }
+
+        public void displayProperties() {
+            System.out.println(msg.toString() + "\n");
+        }
+
+        private void resetList(){
+            for(int i = 0; i < attributes.size(); i++)
+                detailedList.get(i).setData(false);
+        }
+        public void storeUserInput(long storedValue) { this.storedValue = storedValue; }
+    }
+  learner_created: true
+- name: src/numbers/Palindrome.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class Palindrome {
+
+        long temp;
+        long palindrome;
+        Palindrome(){temp = 0; palindrome = 0;}
+
+        protected boolean detectPalindrome(long num){
+            initFields(num);
+            while(temp > 0){
+                palindrome *= 10;
+                palindrome += temp % 10;
+                temp /= 10;
+            }
+
+            return palindrome == num;
+        }
+
+        private void initFields(long num){
+            temp = num;
+            palindrome = 0;
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13202#comment
 status: Unchecked
 record: -1
