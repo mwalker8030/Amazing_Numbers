@@ -1,39 +1,45 @@
 class Army {
 
-    private static Knight[] knights;
-    private static Unit[] units;
-    private static General[] generals;
-    private static Doctor[] doctors;
-    public enum Order{
-        private int quantity;
-        UNITS;
 
-        Order(int num){
-           quantity = num;
+    public enum Order {
+        UNITS(0, 5),
+        KNIGHTS(1, 3),
+        GENERALS(2, 1),
+        DOCTORS(3, 1);
+        public final int quantity;
+        public final int index;
+
+        Order(int i, int num) {
+            quantity = num;
+            index = i;
         }
     }
+
     public static void createArmy() {
         // Create all objects here
-        int[] create = {5, 3, 1, 1};
-        int lcd = 0;
-        for(int i : create) {
-            lcd = Math.max(lcd, i);
+        int[] create = {Order.UNITS.quantity, Order.KNIGHTS.quantity,
+            Order.GENERALS.quantity, Order.DOCTORS.quantity};
+        int greatestFactor = 0;
+        for (int i : create) {
+            greatestFactor = Math.max(greatestFactor, i);
         }
-        units = new Unit[create[0]];
-        knights = new Knight[create[1]];
-        generals = new General[create[2]];
-        doctors = new Doctor[create[3]];
-        for(int i = 0; i < lcd ; i++) {
-            if (i < create[0]) {
+        Unit[] units = new Unit[create[0]];
+        Knight[] knights = new Knight[create[1]];
+        General[] generals = new General[create[2]];
+        Doctor[] doctors = new Doctor[create[Order.DOCTORS.index]];
+
+        for (int i = 0; i < greatestFactor; i++) {
+
+            if (i < create[Order.UNITS.index]) {
                 units[i] = new Unit("IDU%d".formatted(i));
             }
-            if (i < create[1]) {
+            if (i < create[Order.KNIGHTS.index]) {
                 knights[i] = new Knight("IDK%d".formatted(i));
             }
-            if (i < create[2]) {
+            if (i < create[Order.GENERALS.index]) {
                 generals[i] = new General("IDG%d".formatted(i));
             }
-            if (i < create[3]) {
+            if (i < create[Order.DOCTORS.index]) {
                 doctors[i] = new Doctor("IDD%d".formatted(i));
             }
         }
