@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class User {
     private Scanner scan;
     private StringBuilder input;
+    private StringBuilder specifics;
     private ArrayList<String> strArr;
     private long value;
     private long[] values;
@@ -12,6 +13,7 @@ public class User {
     User(){
         scan = new Scanner(System.in);
         input = new StringBuilder();
+        specifics = new StringBuilder();
         strArr = new ArrayList<String>();
         value = 0;
         values = new long[]{0,0};
@@ -32,12 +34,23 @@ public class User {
             values[0] = Long.parseLong(temp[0]);
             values[1] = 0;
             //if there are two parts
-            if(temp.length == 2){
+            if(temp.length >= 2){
                 //get the sequence amount
                 values[1] = Long.parseLong(temp[1]);
                 if(!isValid(values[1])){
                     throw new UserInputException("\nsecond parameter should be a natural number\n");
                 }
+            }
+
+            if(temp.length == 3){
+                //get the specified type of number to look for
+                if(!isValid(temp[2])){
+                    throw new UserInputException("""
+                            The property [SUN] is wrong.
+                            Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY]
+                            """);
+                }
+                specifics.append(temp[2].toLowerCase());
             }
             //assign the values to a temporary storage
             long tempValue = values[0];
@@ -66,6 +79,14 @@ public class User {
         }catch (UserInputException ex){
             System.out.println(ex.getMessage());
         }
+    }
+
+    private boolean isValid(String s) {
+        for(SpecificNums.NumType t : SpecificNums.NumType.values()){
+            if(s.equals(t.toString().toLowerCase()))
+                return true;
+        }
+        return false;
     }
 
     private void initWelcome() {

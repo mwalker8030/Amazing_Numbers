@@ -1096,6 +1096,9 @@ files:
         }
     }
   learner_created: true
+- name: src/numbers/SpecificNums.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13202#comment
 status: Unchecked
 record: -1
