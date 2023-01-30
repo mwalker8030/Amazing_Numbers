@@ -15,18 +15,25 @@ public class Main {
                 System.out.print("\nGoodbye!");
                 break;}
 
-            analysis.setPrinter(user.getValueList().size());
-            for(Long val : user.getValueList()){
-                if(user.isValid(val)){
-                    analysis.storeUserInput(val);
-                    analysis.analyze(val);
-                    analysis.incrementSequence();
+            if(user.getUserNumType().toString().equals(SpecificNums.NumType.DEFAULT.toString())){
+                analysis.setPrinter(user.getValueList().size());
+                for(Long val : user.getValueList()){
+                    if(user.isValid(val)){
+                        analysis.analyze(val);
+                        analysis.incrementSequence();
+                    }
                 }
+
+            } else {
+                analysis.setPrinter(user.getUserEntries(1));
+                analysis.analyze(user.getUserEntries(0), user.getUserNumType().numType(), user.getUserEntries(1));
             }
+
             //print findings of all numbers
             analysis.displayProperties();
             //reset the counter of properties analyzed
             analysis.resetSequenceAndPrinter();
+            user.resetNumType();
         }
     }
 }

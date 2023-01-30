@@ -10,24 +10,25 @@ public class Properties {
         MULTI(2);
 
         public final int printerType;
+
         private Printer(int printerType){
             this.printerType = printerType;
         }
     }
-
     private Printer printer;
+
     private ArrayList<String> attributes;
     private ArrayList<Property> detailedList;
     private long storedValue;
     private StringBuilder msg;
-
     private OddDetector oddDetective;
+
     private MagicDetector mageDetective;
     private DuckDetector duckDetective;
     private Palindrome paliDetective;
     private GapDetector gapDetective;
+    private SpyDetector spyDetective;
     private int sequenceCounter;
-
     public void resetSequenceAndPrinter() {
         sequenceCounter = 0;
         msg.setLength(0);
@@ -42,8 +43,15 @@ public class Properties {
         }
     }
 
+    public void setPrinter(long size) {
+        if(size > printer.printerType){
+            printer = Printer.MULTI;
+        }
+    }
 
-    interface Detective{
+
+
+        interface Detective{
 
         boolean detect();
     }
@@ -52,11 +60,11 @@ public class Properties {
             new Detective(){ public boolean detect(){return duckDetective.detectDucking(storedValue);}},
             new Detective(){ public boolean detect(){return paliDetective.detectPalindrome(storedValue);}},
             new Detective(){ public boolean detect(){return gapDetective.detectGap(storedValue);}},
+            new Detective(){ public boolean detect(){return spyDetective.detectSpy(storedValue);}},
             new Detective(){ public boolean detect(){return !oddDetective.evenOrOdd(storedValue);}},
             new Detective(){ public boolean detect(){return oddDetective.evenOrOdd(storedValue);}}
 
     };
-
     Properties(){
         msg = new StringBuilder("");
         initAttributes();
@@ -66,6 +74,7 @@ public class Properties {
         this.sequenceCounter = 0;
         printer = Printer.SINGLE;
     }
+
     private void initAttributes() {
         attributes = new ArrayList<String>(
                 Arrays.asList(
@@ -73,12 +82,12 @@ public class Properties {
                         "duck",
                         "palindromic",
                         "gapful",
+                        "spy",
                         "even",
                         "odd"
                 )
         );
     }
-
     private void initList(){
         detailedList = new ArrayList<Property>();
         while(detailedList.size() < attributes.size()){
@@ -92,10 +101,12 @@ public class Properties {
         duckDetective = new DuckDetector();
         paliDetective = new Palindrome();
         gapDetective = new GapDetector();
+        spyDetective = new SpyDetector();
     }
+
     public void analyze(long num){
 
-
+        storedValue = num;
         for(int i = 0; i < attributes.size(); i++)
             detailedList.set(i, new Property(attributes.get(i),detectives[i].detect()));
 
@@ -104,6 +115,36 @@ public class Properties {
         else
             saveListOfProperties();
         resetList();
+    }
+    public void analyze(Long val, int numType, long quantity) {
+        ArrayList<Integer> nsnt = new ArrayList<Integer>();
+        storedValue = val;
+        for(int i = 0; i < attributes.size(); i++){
+            if ( i != numType){
+                nsnt.add(i);
+            }
+        }
+
+        for(long i = 0; i < quantity;){
+
+            if(detectives[numType].detect()){
+                detailedList.set(numType, new Property(attributes.get(numType), true));
+                for(int ind : nsnt){
+                    detailedList.set(ind, new Property(attributes.get(ind),detectives[ind].detect()));
+                }
+
+                if(printer == Printer.SINGLE) {
+                    saveProperties();
+                }
+                else {
+                    saveListOfProperties();
+                }
+                resetList();
+                i++;
+            }
+
+            storedValue++;
+        }
     }
 
     public void analyzeList(long num){

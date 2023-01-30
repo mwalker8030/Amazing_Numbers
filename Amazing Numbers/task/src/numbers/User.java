@@ -10,6 +10,7 @@ public class User {
     private long value;
     private long[] values;
     private ArrayList<Long> valueList;
+    private SpecificNums.NumType userNumType;
     User(){
         scan = new Scanner(System.in);
         input = new StringBuilder();
@@ -18,6 +19,7 @@ public class User {
         value = 0;
         values = new long[]{0,0};
         valueList = new ArrayList<Long>();
+        userNumType = SpecificNums.NumType.DEFAULT;
         initWelcome();
     }
 
@@ -31,60 +33,83 @@ public class User {
             String[] temp = input.toString().split(" ");
 
             //assign value to index regardless of result
+            if(!isNumber(temp[0])){
+                throw new UserInputException
+                        ("\nThe first parameter should be a natural number or zero.");
+            }
             values[0] = Long.parseLong(temp[0]);
             values[1] = 0;
             //if there are two parts
             if(temp.length >= 2){
                 //get the sequence amount
-                values[1] = Long.parseLong(temp[1]);
-                if(!isValid(values[1])){
-                    throw new UserInputException("\nsecond parameter should be a natural number\n");
+                if(!isNumber(temp[1])){
+                    throw new UserInputException("\nsecond parameter should be a natural number");
                 }
+                values[1] = Long.parseLong(temp[1]);
+
             }
 
             if(temp.length == 3){
                 //get the specified type of number to look for
-                if(!isValid(temp[2])){
+                if(!isValid(temp[2].toLowerCase())){
                     throw new UserInputException("""
-                            The property [SUN] is wrong.
-                            Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY]
-                            """);
+                            
+                            The property [%s] is wrong.
+                            Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY]""".formatted(temp[2].toUpperCase()));
                 }
+                userNumType = SpecificNums.NumType.getType(temp[2]);
                 specifics.append(temp[2].toLowerCase());
+            }else{
+                //assign the values to a temporary storage
+                long tempValue = values[0];
+                do{
+                    //add each sequence to the end of the list
+                    valueList.add(tempValue++);
+                    //until number of sequences reaches 0
+                } while(values[1]-- > 1);
+
+                for(Long v : valueList){
+                    if(!isValid(v)){
+                        throw new UserInputException
+                                ("\nThe first parameter should be a natural number or zero.\n");
+                    }
+                }
+
+                for (char d : input.toString().toCharArray()) {
+                    if (d < '0' || d > '9') {
+                        //throw some error
+                        if(d != ' ') {
+                            throw new UserInputException
+                                    ("\nThe first parameter should be a natural number or zero.\n");
+                        }
+                    }
+                }
             }
-            //assign the values to a temporary storage
-            long tempValue = values[0];
-            do{
-                //add each sequence to the end of the list
-                valueList.add(tempValue++);
-                //until number of sequences reaches 0
-            } while(values[1]-- > 1);
 
 
             //for(Long v : valueList){ }
-            for (char d : input.toString().toCharArray()) {
-                if (d < '0' || d > '9') {
-                    //throw some error
-                    if(d != ' ')
-                        throw new UserInputException
-                                ("\nThe first parameter should be a natural number or zero.\n");
-                }
-            }
-            for(Long v : valueList){
-                if(!isValid(v)){
-                    throw new UserInputException
-                            ("\nThe first parameter should be a natural number or zero.\n");
-                }
-            }
+
         }catch (UserInputException ex){
-            System.out.println(ex.getMessage());
+            System.out.print(ex.getMessage());
         }
+    }
+
+    private boolean isNumber(String s) {
+        for(char d : s.toCharArray()){
+            if (d < '0' || d > '9') {
+                //throw some error
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean isValid(String s) {
         for(SpecificNums.NumType t : SpecificNums.NumType.values()){
-            if(s.equals(t.toString().toLowerCase()))
+            if(s.equals(t.toString().toLowerCase())){
+                userNumType = t;
                 return true;
+            }
         }
         return false;
     }
@@ -97,7 +122,8 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
                 """);
@@ -111,4 +137,11 @@ Supported requests:
 
     public ArrayList<Long> getValueList(){ return this.valueList;}
 
+    public SpecificNums.NumType getUserNumType(){
+        return userNumType;
+    }
+
+    public void resetNumType() {
+        userNumType = SpecificNums.NumType.DEFAULT;
+    }
 }
