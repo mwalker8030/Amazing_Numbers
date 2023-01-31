@@ -7,9 +7,10 @@ public class SpecificNums {
         PALINDROMIC(2, "palindromic"),
         GAPFUL(3, "gapful"),
         SPY(4, "spy"),
-        EVEN(5, "even"),
-        ODD(6, "odd"),
-        DEFAULT(7, "default");
+        SQUARE(5, "square"),
+        EVEN(6, "even"),
+        ODD(7, "odd"),
+        DEFAULT(8, "default");
 
         private int index;
         private String title;

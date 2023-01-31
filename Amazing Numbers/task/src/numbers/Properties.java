@@ -28,6 +28,7 @@ public class Properties {
     private Palindrome paliDetective;
     private GapDetector gapDetective;
     private SpyDetector spyDetective;
+    private SquareDetector squareDetector;
     private int sequenceCounter;
     public void resetSequenceAndPrinter() {
         sequenceCounter = 0;
@@ -51,8 +52,7 @@ public class Properties {
 
 
 
-        interface Detective{
-
+    interface Detective{
         boolean detect();
     }
     private Detective[] detectives = new Detective[]{
@@ -61,6 +61,7 @@ public class Properties {
             new Detective(){ public boolean detect(){return paliDetective.detectPalindrome(storedValue);}},
             new Detective(){ public boolean detect(){return gapDetective.detectGap(storedValue);}},
             new Detective(){ public boolean detect(){return spyDetective.detectSpy(storedValue);}},
+            new Detective(){ public boolean detect(){return squareDetector.detectSquare(storedValue);}},
             new Detective(){ public boolean detect(){return !oddDetective.evenOrOdd(storedValue);}},
             new Detective(){ public boolean detect(){return oddDetective.evenOrOdd(storedValue);}}
 
@@ -83,6 +84,7 @@ public class Properties {
                         "palindromic",
                         "gapful",
                         "spy",
+                        "square",
                         "even",
                         "odd"
                 )
@@ -102,6 +104,7 @@ public class Properties {
         paliDetective = new Palindrome();
         gapDetective = new GapDetector();
         spyDetective = new SpyDetector();
+        squareDetector = new SquareDetector();
     }
 
     public void analyze(long num){
