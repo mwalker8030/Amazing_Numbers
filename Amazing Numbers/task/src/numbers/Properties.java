@@ -28,7 +28,8 @@ public class Properties {
     private Palindrome paliDetective;
     private GapDetector gapDetective;
     private SpyDetector spyDetective;
-    private SquareDetector squareDetector;
+    private SquareDetector squareDetective;
+    private SunDetector sunDetective;
     private int sequenceCounter;
     public void resetSequenceAndPrinter() {
         sequenceCounter = 0;
@@ -61,7 +62,8 @@ public class Properties {
             new Detective(){ public boolean detect(){return paliDetective.detectPalindrome(storedValue);}},
             new Detective(){ public boolean detect(){return gapDetective.detectGap(storedValue);}},
             new Detective(){ public boolean detect(){return spyDetective.detectSpy(storedValue);}},
-            new Detective(){ public boolean detect(){return squareDetector.detectSquare(storedValue);}},
+            new Detective(){ public boolean detect(){return squareDetective.detectSquare(storedValue);}},
+            new Detective(){ public boolean detect(){return sunDetective.detectSun(storedValue);}},
             new Detective(){ public boolean detect(){return !oddDetective.evenOrOdd(storedValue);}},
             new Detective(){ public boolean detect(){return oddDetective.evenOrOdd(storedValue);}}
 
@@ -85,6 +87,7 @@ public class Properties {
                         "gapful",
                         "spy",
                         "square",
+                        "sunny",
                         "even",
                         "odd"
                 )
@@ -104,7 +107,8 @@ public class Properties {
         paliDetective = new Palindrome();
         gapDetective = new GapDetector();
         spyDetective = new SpyDetector();
-        squareDetector = new SquareDetector();
+        squareDetective = new SquareDetector();
+        sunDetective = new SunDetector();
     }
 
     public void analyze(long num){
@@ -119,19 +123,20 @@ public class Properties {
             saveListOfProperties();
         resetList();
     }
-    public void analyze(Long val, int numType, long quantity) {
+    public void analyze(Long val, ArrayList<SpecificNums.NumType> numTypes, long quantity) {
         ArrayList<Integer> nsnt = new ArrayList<Integer>();
         storedValue = val;
         for(int i = 0; i < attributes.size(); i++){
-            if ( i != numType){
-                nsnt.add(i);
+            for(SpecificNums.NumType t : numTypes){
+                if ( i != t.numType()){
+                    nsnt.add(i);
+                }
             }
         }
 
         for(long i = 0; i < quantity;){
 
-            if(detectives[numType].detect()){
-                detailedList.set(numType, new Property(attributes.get(numType), true));
+            if(detectSpecifics(numTypes)){
                 for(int ind : nsnt){
                     detailedList.set(ind, new Property(attributes.get(ind),detectives[ind].detect()));
                 }
@@ -148,6 +153,16 @@ public class Properties {
 
             storedValue++;
         }
+    }
+
+    private boolean detectSpecifics(ArrayList<SpecificNums.NumType> numTypes) {
+        for(SpecificNums.NumType t : numTypes){
+            if(!detectives[t.numType()].detect()){
+                return false;
+            }
+            detailedList.set(t.numType(), new Property(attributes.get(t.numType()), true));
+        }
+        return true;
     }
 
     public void analyzeList(long num){

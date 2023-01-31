@@ -10,7 +10,7 @@ public class User {
     private long value;
     private long[] values;
     private ArrayList<Long> valueList;
-    private SpecificNums.NumType userNumType;
+    private ArrayList<SpecificNums.NumType> userNumTypes;
     User(){
         scan = new Scanner(System.in);
         input = new StringBuilder();
@@ -19,7 +19,8 @@ public class User {
         value = 0;
         values = new long[]{0,0};
         valueList = new ArrayList<Long>();
-        userNumType = SpecificNums.NumType.DEFAULT;
+        userNumTypes = new ArrayList<>();
+
         initWelcome();
     }
 
@@ -49,17 +50,28 @@ public class User {
 
             }
 
-            if(temp.length == 3){
-                //get the specified type of number to look for
-                if(!isValid(temp[2].toLowerCase())){
-                    throw new UserInputException("""
-                            
-                            The property [%s] is wrong.
-                            Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY]""".formatted(temp[2].toUpperCase()));
+            if(temp.length >= 3){
+                //prints the rest of the String array starting from an index
+                //insert commas between each token and trim off the last comma
+                StringBuilder str = new StringBuilder();
+                for(int i = 2; i < temp.length; i++){
+                    str.append(temp[i] + ", ");
                 }
-                userNumType = SpecificNums.NumType.getType(temp[2]);
-                specifics.append(temp[2].toLowerCase());
+                str.setLength(str.length() - 2);
+
+                for(int i = 2; i < temp.length; i++) {
+                    //get the specified type of number to look for
+                    if (!isValid(temp[i].toLowerCase())) {
+                        throw new UserInputException("""
+                                                            
+                                The property [%s] is wrong.
+                                Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]""".formatted(str.toString().toUpperCase()));
+                    }
+                    userNumTypes.add(SpecificNums.NumType.getType(temp[i]));
+                    specifics.append(temp[i].toLowerCase());
+                }
             }else{
+                userNumTypes.add(SpecificNums.NumType.DEFAULT);
                 //assign the values to a temporary storage
                 long tempValue = values[0];
                 do{
@@ -94,6 +106,7 @@ public class User {
         }
     }
 
+
     private boolean isNumber(String s) {
         for(char d : s.toCharArray()){
             if (d < '0' || d > '9') {
@@ -107,7 +120,6 @@ public class User {
     private boolean isValid(String s) {
         for(SpecificNums.NumType t : SpecificNums.NumType.values()){
             if(s.equals(t.toString().toLowerCase())){
-                userNumType = t;
                 return true;
             }
         }
@@ -116,16 +128,17 @@ public class User {
 
     private void initWelcome() {
         System.out.println("""
-Welcome to Amazing Numbers!
+                Welcome to Amazing Numbers!
 
-Supported requests:
-- enter a natural number to know its properties;
-- enter two natural numbers to obtain the properties of the list:
-  * the first parameter represents a starting number;
-  * the second parameters show how many consecutive numbers are to be processed;
-- two natural numbers and a property to search for;
-- separate the parameters with one space;
-- enter 0 to exit.
+                Supported requests:
+                - enter a natural number to know its properties;\s
+                - enter two natural numbers to obtain the properties of the list:
+                  * the first parameter represents a starting number;
+                  * the second parameter shows how many consecutive numbers are to be printed;
+                - two natural numbers and a property to search for;
+                - two natural numbers and two properties to search for;
+                - separate the parameters with one space;
+                - enter 0 to exit.
                 """);
     }
 
@@ -137,11 +150,14 @@ Supported requests:
 
     public ArrayList<Long> getValueList(){ return this.valueList;}
 
-    public SpecificNums.NumType getUserNumType(){
-        return userNumType;
+    public ArrayList<SpecificNums.NumType> getUserNumTypes(){
+        return userNumTypes;
     }
 
-    public void resetNumType() {
-        userNumType = SpecificNums.NumType.DEFAULT;
+    public void resetNumTypes() {
+        userNumTypes.clear();
     }
+
+
+
 }
