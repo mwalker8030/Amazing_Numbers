@@ -40,13 +40,13 @@ public class Properties {
     public void incrementSequence() { ++sequenceCounter; }
 
     public void setPrinter(int size) {
-        if(size > printer.printerType){
+        if(size > 0){
             printer = Printer.MULTI;
         }
     }
 
     public void setPrinter(long size) {
-        if(size > printer.printerType){
+        if(size > 0){
             printer = Printer.MULTI;
         }
     }

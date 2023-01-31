@@ -16,7 +16,7 @@ public class Main {
                 break;}
 
             if(user.getUserNumTypes().get(0).toString().equals(SpecificNums.NumType.DEFAULT.toString())){
-                analysis.setPrinter(user.getValueList().size());
+                analysis.setPrinter(user.getUserEntries(1));
                 for(Long val : user.getValueList()){
                     if(user.isValid(val)){
                         analysis.analyze(val);

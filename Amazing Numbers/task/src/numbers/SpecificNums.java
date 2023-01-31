@@ -36,16 +36,18 @@ public class SpecificNums {
             return index;
         }
 
-        public int numType(String str){
+        public static int numType(String str){
             for(SpecificNums.NumType t : SpecificNums.NumType.values()){
-                if(t.toString().equals(str)){
+                if(t.toString().equalsIgnoreCase(str)){
                     return t.numType();
                 }
             }
             return NumType.DEFAULT.numType();
         }
 
-
+        public String getConflictingProperty(){
+            return error;
+        }
 
     }
 }
