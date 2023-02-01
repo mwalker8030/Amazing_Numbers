@@ -70,7 +70,7 @@ public class User {
                                 Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]""".formatted(
                                 (errNumTypes.toString().contains(",") ? "properties" : "property") , errNumTypes.toString().toUpperCase(), (errNumTypes.toString().contains(",") ? "are" : "is")));
                     }
-                    userNumTypes.add(SpecificNums.NumType.getType(temp[i]));
+                    userNumTypes.add(SpecificNums.NumType.valueOf(temp[i]));
                     specifics.append(temp[i].toLowerCase());
                 }
 
@@ -156,7 +156,7 @@ public class User {
             /*
             if(isNumber(str)){continue;}
         */
-        if(SpecificNums.NumType.numType(str) != SpecificNums.NumType.DEFAULT.numType()){
+        if(SpecificNums.NumType.valueOf(str) != SpecificNums.NumType.DEFAULT){
                 flag = true;
             }
 
