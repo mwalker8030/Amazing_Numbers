@@ -26,13 +26,16 @@ public class Main {
 
             } else {
                 analysis.setPrinter(user.getUserEntries(1));
-                analysis.analyze(user.getUserEntries(0), user.getUserNumTypes(), user.getUserEntries(1));
+                if(user.getExclusions().isEmpty())
+                    analysis.analyze(user.getUserEntries(0), user.getUserNumTypes(), user.getUserEntries(1));
+                else
+                    analysis.analyze(user.getUserEntries(0), user.getUserNumTypes(), user.getUserEntries(1), user.getExclusions());
             }
 
             //print findings of all numbers
             analysis.displayProperties();
             //reset the counter of properties analyzed
-            analysis.resetSequenceAndPrinter();
+            analysis.resetSequenceAndPrinters();
             user.resetNumTypes();
         }
     }

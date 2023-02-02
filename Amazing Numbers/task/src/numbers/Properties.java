@@ -14,16 +14,18 @@ public class Properties {
         private Printer(int printerType){
             this.printerType = printerType;
         }
+
     }
     private Printer printer;
-
     private ArrayList<String> attributes;
+
     private ArrayList<Property> detailedList;
+    private ArrayList<Integer> nsnt;
     private long storedValue;
     private StringBuilder msg;
     private OddDetector oddDetective;
-
     private MagicDetector mageDetective;
+
     private DuckDetector duckDetective;
     private Palindrome paliDetective;
     private GapDetector gapDetective;
@@ -32,12 +34,11 @@ public class Properties {
     private SunDetector sunDetective;
     private JumpDetector jumpDetective;
     private int sequenceCounter;
-    public void resetSequenceAndPrinter() {
+    public void resetSequenceAndPrinters() {
         sequenceCounter = 0;
         msg.setLength(0);
         printer = Printer.SINGLE;
     }
-
     public void incrementSequence() { ++sequenceCounter; }
 
     public void setPrinter(int size) {
@@ -55,6 +56,7 @@ public class Properties {
 
 
     interface Detective{
+
         boolean detect();
     }
     private Detective[] detectives = new Detective[]{
@@ -79,7 +81,6 @@ public class Properties {
         this.sequenceCounter = 0;
         printer = Printer.SINGLE;
     }
-
     private void initAttributes() {
         attributes = new ArrayList<String>(
                 Arrays.asList(
@@ -96,13 +97,14 @@ public class Properties {
                 )
         );
     }
+
     private void initList(){
         detailedList = new ArrayList<Property>();
         while(detailedList.size() < attributes.size()){
             detailedList.add(new Property());
         }
+        nsnt = new ArrayList<Integer>();
     }
-
     private void initDetectives(){
         oddDetective = new OddDetector();
         mageDetective = new MagicDetector();
@@ -117,6 +119,7 @@ public class Properties {
 
     public void analyze(long num){
 
+        //assign passed value to stored value
         storedValue = num;
         for(int i = 0; i < attributes.size(); i++)
             detailedList.set(i, new Property(attributes.get(i),detectives[i].detect()));
@@ -127,8 +130,19 @@ public class Properties {
             saveListOfProperties();
         resetList();
     }
+
+    /**
+     * Analyze a range of numbers and store the properties of each number in a list
+     * to be printed later.
+     * @param val
+     *  The starting value of the range
+     * @param numTypes
+     *  The types of numbers to be analyzed
+     * @param quantity
+     *  The quantity of numbers to be analyzed
+     */
     public void analyze(Long val, ArrayList<SpecificNums.NumType> numTypes, long quantity) {
-        ArrayList<Integer> nsnt = new ArrayList<Integer>();
+        nsnt.clear();
         storedValue = val;
         for(SpecificNums.NumType t : SpecificNums.NumType.values()){
             if(!numTypes.contains(t) && t != SpecificNums.NumType.DEFAULT){
@@ -157,14 +171,70 @@ public class Properties {
         }
     }
 
-    private boolean detectSpecifics(ArrayList<SpecificNums.NumType> numTypes) {
-        for(SpecificNums.NumType t : numTypes){
+    public void analyze(long userEntries, ArrayList<SpecificNums.NumType> userNumTypes, long val, ArrayList<Integer> exclusions) {
+        nsnt.clear();
+        storedValue = userEntries;
+
+        for(SpecificNums.NumType t : SpecificNums.NumType.values()){
+            if(!userNumTypes.contains(t) && !exclusions.contains(t.ordinal()) && t != SpecificNums.NumType.DEFAULT && !exclusions.contains(t.ordinal())){
+                nsnt.add(t.ordinal());
+            }
+        }
+
+        for(long i = 0; i < val;){
+
+            if(detectSpecifics(userNumTypes, exclusions)){
+                for(int ind : nsnt){
+                    detailedList.set(ind, new Property(attributes.get(ind),detectives[ind].detect()));
+                }
+
+                if(printer == Printer.SINGLE) {
+                    saveProperties();
+                }
+                else {
+                    saveListOfProperties();
+                }
+                resetList();
+                i++;
+            }
+
+            storedValue++;
+        }
+    }
+
+    private boolean detectSpecifics(ArrayList<SpecificNums.NumType> specifics) {
+        for(SpecificNums.NumType t : specifics){
             if(!detectives[t.ordinal()].detect()){
                 return false;
             }
             detailedList.set(t.ordinal(), new Property(attributes.get(t.ordinal()), true));
         }
         return true;
+    }
+
+
+    private boolean detectSpecifics(ArrayList<SpecificNums.NumType> userNumTypes, ArrayList<Integer> exclusions) {
+        for(SpecificNums.NumType t : userNumTypes){
+            for(int i : exclusions){
+                if(detectives[i].detect()){
+                    return false;
+                }
+            }
+            setAllFalse(exclusions);
+            if(!exclusions.contains(t.ordinal())){
+                if(!detectives[t.ordinal()].detect()){
+                    return false;
+                }
+                detailedList.set(t.ordinal(), new Property(attributes.get(t.ordinal()), true));
+            }
+        }
+        return true;
+    }
+
+    private void setAllFalse(ArrayList<Integer> exclusions) {
+        for(int i : exclusions){
+            detailedList.set(i, new Property(attributes.get(i), false));
+        }
     }
 
     public void analyzeList(long num){

@@ -12,6 +12,7 @@ public class User {
     private ArrayList<Long> valueList;
     private ArrayList<SpecificNums.NumType> userNumTypes;
     private StringBuilder errNumTypes;
+    private ArrayList<Integer> exclusions;
     User(){
         scan = new Scanner(System.in);
         input = new StringBuilder();
@@ -21,7 +22,9 @@ public class User {
         values = new long[]{0,0};
         valueList = new ArrayList<Long>();
         userNumTypes = new ArrayList<>();
+
         errNumTypes = new StringBuilder();
+        exclusions = new ArrayList<>();
 
         initWelcome();
     }
@@ -30,6 +33,7 @@ public class User {
         try {
             input.setLength(0);
             valueList.clear();
+            exclusions.clear();
             System.out.print("Enter a request:");
             input.append(scan.nextLine());
             //separate the string into two parts
@@ -71,9 +75,11 @@ public class User {
                                 (errNumTypes.toString().contains(",") ? "properties" : "property") , errNumTypes.toString().toUpperCase(), (errNumTypes.toString().contains(",") ? "are" : "is")));
                     }
 
-                    userNumTypes.add(SpecificNums.NumType.valueOf(temp[i].toUpperCase()));
+                    userNumTypes.add(SpecificNums.NumType.valueOf(exlude('-', temp[i]).toUpperCase()));
                     specifics.append(temp[i].toLowerCase());
                 }
+
+                addNumTypeExclusions('-', temp, userNumTypes);
 
                 if(containsParadox()){
                     throw new UserInputException("""
@@ -128,13 +134,45 @@ public class User {
         }
     }
 
+    private void addNumTypeExclusions(char c, String[] temp, ArrayList<SpecificNums.NumType> userNumTypes) {
+        for(String str : temp){
+            if(!isNumber(str) && str.contains("-")){
+                for(SpecificNums.NumType t : userNumTypes){
+                    if(t.toString().equalsIgnoreCase(exlude(c, str))){
+                        exclusions.add(t.ordinal());
+                    }
+                }
+            }
+        }
+    }
+
+    public ArrayList<Integer> getExclusions() {
+        return exclusions;
+    }
+
     private boolean containsParadox() {
         for(SpecificNums.NumType t : userNumTypes){
             for(SpecificNums.NumType errCheck : userNumTypes){
-                if(t.getConflictingProperty().equals(errCheck.toString().toLowerCase())){
+                if(t == errCheck){
                     return true;
                 }
+                if(t.getConflictingProperty().equals(errCheck.toString().toLowerCase())){
+                    if(!exclusions.isEmpty()){
+                       if(exclusiveParadox(t, errCheck)){
+                           return true;
+                       }
+                    }else{
+                        return true;
+                    }
+                }
             }
+        }
+        return false;
+    }
+
+    private boolean exclusiveParadox(SpecificNums.NumType t, SpecificNums.NumType errCheck) {
+        if(exclusions.contains(t.ordinal()) && exclusions.contains(errCheck.ordinal())){
+            return true;
         }
         return false;
     }
@@ -155,7 +193,7 @@ public class User {
 
         for(String str : temp){
             for (SpecificNums.NumType t : SpecificNums.NumType.values()){
-                if(t.contains(str)){
+                if(t.contains(exlude('-', str))){
                     flag = true;
                 }
             }
@@ -175,6 +213,22 @@ public class User {
 
         return true;
 
+    }
+
+    /**
+     * Removes a character from a string
+     * @param c the character to remove
+     * @param str the string to remove the character from
+     * @return the string without the character
+     */
+    private String exlude(char c, String str) {
+        StringBuilder sb = new StringBuilder();
+        for(char d : str.toCharArray()){
+            if(d != c){
+                sb.append(d);
+            }
+        }
+        return sb.toString();
     }
 
     private boolean isValid(String s) {
