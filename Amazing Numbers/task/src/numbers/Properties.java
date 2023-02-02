@@ -126,11 +126,9 @@ public class Properties {
     public void analyze(Long val, ArrayList<SpecificNums.NumType> numTypes, long quantity) {
         ArrayList<Integer> nsnt = new ArrayList<Integer>();
         storedValue = val;
-        for(int i = 0; i < attributes.size(); i++){
-            for(SpecificNums.NumType t : numTypes){
-                if ( i != t.numType()){
-                    nsnt.add(i);
-                }
+        for(SpecificNums.NumType t : SpecificNums.NumType.values()){
+            if(!numTypes.contains(t) && t != SpecificNums.NumType.DEFAULT){
+                nsnt.add(t.ordinal());
             }
         }
 
@@ -157,10 +155,10 @@ public class Properties {
 
     private boolean detectSpecifics(ArrayList<SpecificNums.NumType> numTypes) {
         for(SpecificNums.NumType t : numTypes){
-            if(!detectives[t.numType()].detect()){
+            if(!detectives[t.ordinal()].detect()){
                 return false;
             }
-            detailedList.set(t.numType(), new Property(attributes.get(t.numType()), true));
+            detailedList.set(t.ordinal(), new Property(attributes.get(t.ordinal()), true));
         }
         return true;
     }

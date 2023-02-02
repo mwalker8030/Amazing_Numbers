@@ -1102,9 +1102,15 @@ files:
 - name: src/numbers/SpyDetector.java
   visible: true
   learner_created: true
+- name: src/numbers/SunDetector.java
+  visible: true
+  learner_created: true
+- name: src/numbers/SquareDetector.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13202#comment
 status: Solved
 feedback:
   message: Congratulations!
-  time: "Mon, 30 Jan 2023 11:23:25 UTC"
+  time: "Mon, 30 Jan 2023 11:25:55 UTC"
 record: 3
