@@ -1544,6 +1544,12 @@ files:
         }
     }
   learner_created: true
+- name: src/numbers/HappyDetector.java
+  visible: true
+  learner_created: true
+- name: src/numbers/SadDetector.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13205#comment
 status: Unchecked
 record: -1

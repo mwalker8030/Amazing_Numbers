@@ -71,7 +71,7 @@ public class User {
                         throw new UserInputException("""
 
                                 The %s [%s] %s wrong.
-                                Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]""".formatted(
+                                Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, HAPPY, SAD]""".formatted(
                                 (errNumTypes.toString().contains(",") ? "properties" : "property") , errNumTypes.toString().toUpperCase(), (errNumTypes.toString().contains(",") ? "are" : "is")));
                     }
 
@@ -153,9 +153,7 @@ public class User {
     private boolean containsParadox() {
         for(SpecificNums.NumType t : userNumTypes){
             for(SpecificNums.NumType errCheck : userNumTypes){
-                if(t == errCheck){
-                    return true;
-                }
+                if(userNumTypes.size() > 1 && t == errCheck) { return true; }
                 if(t.getConflictingProperty().equals(errCheck.toString().toLowerCase())){
                     if(!exclusions.isEmpty()){
                        if(exclusiveParadox(t, errCheck)){
@@ -270,7 +268,5 @@ public class User {
     public void resetNumTypes() {
         userNumTypes.clear();
     }
-
-
 
 }

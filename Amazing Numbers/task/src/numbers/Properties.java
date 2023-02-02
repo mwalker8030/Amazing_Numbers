@@ -33,6 +33,8 @@ public class Properties {
     private SquareDetector squareDetective;
     private SunDetector sunDetective;
     private JumpDetector jumpDetective;
+    private HappyDetector happyDetective;
+
     private int sequenceCounter;
     public void resetSequenceAndPrinters() {
         sequenceCounter = 0;
@@ -60,6 +62,8 @@ public class Properties {
         boolean detect();
     }
     private Detective[] detectives = new Detective[]{
+            new Detective(){ public boolean detect(){return !oddDetective.evenOrOdd(storedValue);}},
+            new Detective(){ public boolean detect(){return oddDetective.evenOrOdd(storedValue);}},
             new Detective(){ public boolean detect(){return mageDetective.detectMagic(storedValue);}},
             new Detective(){ public boolean detect(){return duckDetective.detectDucking(storedValue);}},
             new Detective(){ public boolean detect(){return paliDetective.detectPalindrome(storedValue);}},
@@ -68,8 +72,8 @@ public class Properties {
             new Detective(){ public boolean detect(){return squareDetective.detectSquare(storedValue);}},
             new Detective(){ public boolean detect(){return sunDetective.detectSun(storedValue);}},
             new Detective(){ public boolean detect(){return jumpDetective.detectJump(storedValue);}},
-            new Detective(){ public boolean detect(){return !oddDetective.evenOrOdd(storedValue);}},
-            new Detective(){ public boolean detect(){return oddDetective.evenOrOdd(storedValue);}}
+            new Detective(){ public boolean detect(){return happyDetective.detectHappy(storedValue);}},
+            new Detective(){ public boolean detect(){return !happyDetective.detectHappy(storedValue);}}
 
     };
     Properties(){
@@ -84,6 +88,8 @@ public class Properties {
     private void initAttributes() {
         attributes = new ArrayList<String>(
                 Arrays.asList(
+                        "even",
+                        "odd",
                         "buzz",
                         "duck",
                         "palindromic",
@@ -92,8 +98,8 @@ public class Properties {
                         "square",
                         "sunny",
                         "jumping",
-                        "even",
-                        "odd"
+                        "happy",
+                        "sad"
                 )
         );
     }
@@ -115,6 +121,7 @@ public class Properties {
         squareDetective = new SquareDetector();
         sunDetective = new SunDetector();
         jumpDetective = new JumpDetector();
+        happyDetective = new HappyDetector();
     }
 
     public void analyze(long num){

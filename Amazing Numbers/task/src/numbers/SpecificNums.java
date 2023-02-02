@@ -2,6 +2,8 @@ package numbers;
 
 public class SpecificNums {
     public enum NumType{
+        EVEN("odd"),
+        ODD("even"),
         BUZZ(),
         DUCK("spy"),
         PALINDROMIC,
@@ -10,8 +12,8 @@ public class SpecificNums {
         SQUARE("sunny"),
         SUNNY("square"),
         JUMPING,
-        EVEN("odd"),
-        ODD("even"),
+        HAPPY("sad"),
+        SAD("happy"),
         DEFAULT("buzz");
 
         private String error;
