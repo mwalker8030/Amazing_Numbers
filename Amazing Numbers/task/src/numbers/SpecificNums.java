@@ -9,6 +9,7 @@ public class SpecificNums {
         SPY("duck"),
         SQUARE("sunny"),
         SUNNY("square"),
+        JUMPING,
         EVEN("odd"),
         ODD("even"),
         DEFAULT("buzz");
@@ -26,5 +27,8 @@ public class SpecificNums {
             return error;
         }
 
+        public boolean contains(String req) {
+            return this.name().equals(req.toUpperCase());
+        }
     }
 }

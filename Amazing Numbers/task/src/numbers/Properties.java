@@ -30,6 +30,7 @@ public class Properties {
     private SpyDetector spyDetective;
     private SquareDetector squareDetective;
     private SunDetector sunDetective;
+    private JumpDetector jumpDetective;
     private int sequenceCounter;
     public void resetSequenceAndPrinter() {
         sequenceCounter = 0;
@@ -64,6 +65,7 @@ public class Properties {
             new Detective(){ public boolean detect(){return spyDetective.detectSpy(storedValue);}},
             new Detective(){ public boolean detect(){return squareDetective.detectSquare(storedValue);}},
             new Detective(){ public boolean detect(){return sunDetective.detectSun(storedValue);}},
+            new Detective(){ public boolean detect(){return jumpDetective.detectJump(storedValue);}},
             new Detective(){ public boolean detect(){return !oddDetective.evenOrOdd(storedValue);}},
             new Detective(){ public boolean detect(){return oddDetective.evenOrOdd(storedValue);}}
 
@@ -88,6 +90,7 @@ public class Properties {
                         "spy",
                         "square",
                         "sunny",
+                        "jumping",
                         "even",
                         "odd"
                 )
@@ -109,6 +112,7 @@ public class Properties {
         spyDetective = new SpyDetector();
         squareDetective = new SquareDetector();
         sunDetective = new SunDetector();
+        jumpDetective = new JumpDetector();
     }
 
     public void analyze(long num){

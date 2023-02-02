@@ -65,11 +65,12 @@ public class User {
                     //get the specified type of number to look for
                     if (!isValid(str.toString().split(" "))) {
                         throw new UserInputException("""
-                                                            
+
                                 The %s [%s] %s wrong.
-                                Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]""".formatted(
+                                Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]""".formatted(
                                 (errNumTypes.toString().contains(",") ? "properties" : "property") , errNumTypes.toString().toUpperCase(), (errNumTypes.toString().contains(",") ? "are" : "is")));
                     }
+
                     userNumTypes.add(SpecificNums.NumType.valueOf(temp[i].toUpperCase()));
                     specifics.append(temp[i].toLowerCase());
                 }
@@ -153,11 +154,10 @@ public class User {
         boolean flag = false;
 
         for(String str : temp){
-            /*
-            if(isNumber(str)){continue;}
-        */
-        if(SpecificNums.NumType.valueOf(str.toUpperCase()) != SpecificNums.NumType.DEFAULT){
-                flag = true;
+            for (SpecificNums.NumType t : SpecificNums.NumType.values()){
+                if(t.contains(str)){
+                    flag = true;
+                }
             }
 
             if(!flag){
@@ -189,14 +189,13 @@ public class User {
     private void initWelcome() {
         System.out.println("""
                 Welcome to Amazing Numbers!
-
+                                
                 Supported requests:
-                - enter a natural number to know its properties;\s
+                - enter a natural number to know its properties;
                 - enter two natural numbers to obtain the properties of the list:
                   * the first parameter represents a starting number;
-                  * the second parameter shows how many consecutive numbers are to be printed;
-                - two natural numbers and a property to search for;
-                - two natural numbers and two properties to search for;
+                  * the second parameter shows how many consecutive numbers are to be processed;
+                - two natural numbers and properties to search for;
                 - separate the parameters with one space;
                 - enter 0 to exit.
                 """);
