@@ -15,7 +15,7 @@ public class Main {
                 System.out.print("\nGoodbye!");
                 break;}
 
-            if(user.getUserNumTypes().get(0).toString().equals(SpecificNums.NumType.DEFAULT.toString())){
+            if(user.getUserNumTypes().get(0).toString().equals(SNT.NumType.DEFAULT.toString())){
                 analysis.setPrinter(user.getUserEntries(1));
                 for(Long val : user.getValueList()){
                     if(user.isValid(val)){

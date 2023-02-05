@@ -148,11 +148,11 @@ public class Properties {
      * @param quantity
      *  The quantity of numbers to be analyzed
      */
-    public void analyze(Long val, ArrayList<SpecificNums.NumType> numTypes, long quantity) {
+    public void analyze(Long val, ArrayList<SNT.NumType> numTypes, long quantity) {
         nsnt.clear();
         storedValue = val;
-        for(SpecificNums.NumType t : SpecificNums.NumType.values()){
-            if(!numTypes.contains(t) && t != SpecificNums.NumType.DEFAULT){
+        for(SNT.NumType t : SNT.NumType.values()){
+            if(!numTypes.contains(t) && t != SNT.NumType.DEFAULT){
                 nsnt.add(t.ordinal());
             }
         }
@@ -178,12 +178,12 @@ public class Properties {
         }
     }
 
-    public void analyze(long userEntries, ArrayList<SpecificNums.NumType> userNumTypes, long val, ArrayList<Integer> exclusions) {
+    public void analyze(long userEntries, ArrayList<SNT.NumType> userNumTypes, long val, ArrayList<Integer> exclusions) {
         nsnt.clear();
         storedValue = userEntries;
 
-        for(SpecificNums.NumType t : SpecificNums.NumType.values()){
-            if(!userNumTypes.contains(t) && !exclusions.contains(t.ordinal()) && t != SpecificNums.NumType.DEFAULT && !exclusions.contains(t.ordinal())){
+        for(SNT.NumType t : SNT.NumType.values()){
+            if(!userNumTypes.contains(t) && !exclusions.contains(t.ordinal()) && t != SNT.NumType.DEFAULT && !exclusions.contains(t.ordinal())){
                 nsnt.add(t.ordinal());
             }
         }
@@ -209,8 +209,8 @@ public class Properties {
         }
     }
 
-    private boolean detectSpecifics(ArrayList<SpecificNums.NumType> specifics) {
-        for(SpecificNums.NumType t : specifics){
+    private boolean detectSpecifics(ArrayList<SNT.NumType> specifics) {
+        for(SNT.NumType t : specifics){
             if(!detectives[t.ordinal()].detect()){
                 return false;
             }
@@ -220,8 +220,8 @@ public class Properties {
     }
 
 
-    private boolean detectSpecifics(ArrayList<SpecificNums.NumType> userNumTypes, ArrayList<Integer> exclusions) {
-        for(SpecificNums.NumType t : userNumTypes){
+    private boolean detectSpecifics(ArrayList<SNT.NumType> userNumTypes, ArrayList<Integer> exclusions) {
+        for(SNT.NumType t : userNumTypes){
             for(int i : exclusions){
                 if(detectives[i].detect()){
                     return false;

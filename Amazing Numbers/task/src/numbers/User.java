@@ -5,18 +5,18 @@ import java.util.Scanner;
 public class User {
     private Scanner scan;
     private StringBuilder input;
-    private StringBuilder specifics;
+    private StringBuilder problemTypes;
     private ArrayList<String> strArr;
     private long value;
     private long[] values;
     private ArrayList<Long> valueList;
-    private ArrayList<SpecificNums.NumType> userNumTypes;
+    private ArrayList<SNT.NumType> userNumTypes;
     private StringBuilder errNumTypes;
     private ArrayList<Integer> exclusions;
     User(){
         scan = new Scanner(System.in);
         input = new StringBuilder();
-        specifics = new StringBuilder();
+        problemTypes = new StringBuilder();
         strArr = new ArrayList<String>();
         value = 0;
         values = new long[]{0,0};
@@ -65,31 +65,30 @@ public class User {
                 }
                 str.setLength(str.length() - 1);
 
-                for(int i = 2; i < temp.length; i++) {
-                    //get the specified type of number to look for
-                    if (!isValid(str.toString().split(" "))) {
-                        throw new UserInputException("""
+                if (!isValid(str.toString().split(" "))) {
+                    throw new UserInputException("""
 
                                 The %s [%s] %s wrong.
                                 Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, HAPPY, SAD]""".formatted(
-                                (errNumTypes.toString().contains(",") ? "properties" : "property") , errNumTypes.toString().toUpperCase(), (errNumTypes.toString().contains(",") ? "are" : "is")));
+                            (errNumTypes.toString().contains(",") ? "properties" : "property") , errNumTypes.toString().toUpperCase(), (errNumTypes.toString().contains(",") ? "are" : "is")));
+                } else {
+                    for(int i = 2; i < temp.length; i++) {
+                        //get the specified type of number to look for
+                        userNumTypes.add(SNT.NumType.valueOf(exclude('-', temp[i]).toUpperCase()));
                     }
-
-                    userNumTypes.add(SpecificNums.NumType.valueOf(exlude('-', temp[i]).toUpperCase()));
-                    specifics.append(temp[i].toLowerCase());
                 }
 
                 addNumTypeExclusions('-', temp, userNumTypes);
 
-                if(containsParadox()){
+                if(containsParadox(str)){
                     throw new UserInputException("""
                                                     
                             The request contains mutually exclusive properties: [%s]
-                            There are no numbers with these properties.""".formatted(str.toString().toUpperCase()));
+                            There are no numbers with these properties.""".formatted(problemTypes.toString().toUpperCase()));
                 }
 
             }else{
-                userNumTypes.add(SpecificNums.NumType.DEFAULT);
+                userNumTypes.add(SNT.NumType.DEFAULT);
                 //assign the values to a temporary storage
                 long tempValue = values[0];
                 long tempSeq = values[1];
@@ -123,9 +122,9 @@ public class User {
 
         }catch (UserInputException ex){
             if(userNumTypes.isEmpty()){
-                userNumTypes.add(SpecificNums.NumType.DEFAULT);
+                userNumTypes.add(SNT.NumType.DEFAULT);
             } else {
-                userNumTypes.set(0, SpecificNums.NumType.DEFAULT);
+                userNumTypes.set(0, SNT.NumType.DEFAULT);
             }
             System.out.print(ex.getMessage());
             if(!errNumTypes.isEmpty()){
@@ -134,11 +133,11 @@ public class User {
         }
     }
 
-    private void addNumTypeExclusions(char c, String[] temp, ArrayList<SpecificNums.NumType> userNumTypes) {
+    private void addNumTypeExclusions(char c, String[] temp, ArrayList<SNT.NumType> userNumTypes) {
         for(String str : temp){
             if(!isNumber(str) && str.contains("-")){
-                for(SpecificNums.NumType t : userNumTypes){
-                    if(t.toString().equalsIgnoreCase(exlude(c, str))){
+                for(SNT.NumType t : userNumTypes){
+                    if(t.toString().equalsIgnoreCase(exclude(c, str))){
                         exclusions.add(t.ordinal());
                     }
                 }
@@ -146,30 +145,78 @@ public class User {
         }
     }
 
-    public ArrayList<Integer> getExclusions() {
-        return exclusions;
-    }
+    /**
+     * Checks if the user input contains a paradox
+     * @return
+     *  true if there is a paradox
+     */
+    private boolean containsParadox(StringBuilder str) {
 
-    private boolean containsParadox() {
-        for(SpecificNums.NumType t : userNumTypes){
-            for(SpecificNums.NumType errCheck : userNumTypes){
-                if(userNumTypes.size() > 1 && t == errCheck) { return true; }
-                if(t.getConflictingProperty().equals(errCheck.toString().toLowerCase())){
-                    if(!exclusions.isEmpty()){
-                       if(exclusiveParadox(t, errCheck)){
-                           return true;
-                       }
-                    }else{
+        String[] temp = str.toString().split(" ");
+        for(int i = 0; i < temp.length; i++){
+            for(int j = 0; j < temp.length; j++){
+                SNT.NumType tempType = SNT.NumType.valueOf(exclude('-', temp[i].toUpperCase()));
+                SNT.NumType tempConflict = SNT.NumType.valueOf(exclude('-', temp[j].toUpperCase()));
+                if(i != j){
+                    if(checkTwinException(tempType, tempConflict)) {
+                        problemTypes.append(temp[i]).append(" ").append(temp[j]);
                         return true;
+                    } else if (checkForConflict(tempType, tempConflict)){
+                        problemTypes.append(temp[i]).append(" ").append(temp[j]);
+                        return true;
+                    } else if(!exclusions.isEmpty()){
+                        if(exclusiveParadox(temp[i], temp[j])) {
+                            problemTypes.append(temp[i]).append(" ").append(temp[j]);
+                            return true;
+                        }
+
                     }
+
                 }
             }
         }
         return false;
     }
 
-    private boolean exclusiveParadox(SpecificNums.NumType t, SpecificNums.NumType errCheck) {
+    private boolean checkForConflict(SNT.NumType tempType, SNT.NumType tempConflict) {
+        if (tempType.getConflict().name().equals(tempConflict.name())
+            && !exclusions.contains(tempType.ordinal())){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkTwinException(SNT.NumType numType, SNT.NumType numType1) {
+        if(numType == numType1 && exclusionAmongGroup(numType, numType1)){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean exclusionAmongGroup(SNT.NumType numType, SNT.NumType numType1) {
+        if(isExcluded(numType).equals("-") || isExcluded(numType1).equals("-")){
+            return true;
+        }
+        return false;
+    }
+
+    private String isExcluded(SNT.NumType numType) {
+        if(exclusions.contains(numType.ordinal())){
+            return "-";
+        }
+        return "";
+    }
+
+    private boolean exclusiveParadox(SNT.NumType t, SNT.NumType errCheck) {
         if(exclusions.contains(t.ordinal()) && exclusions.contains(errCheck.ordinal())){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean exclusiveParadox(String s, String s1) {
+        if(s != s1 && exclusions.contains(SNT.NumType.valueOf(exclude('-',s.toUpperCase())).ordinal())
+                && exclusions.contains(SNT.NumType.valueOf(exclude('-', s1.toUpperCase())).ordinal())){
             return true;
         }
         return false;
@@ -186,13 +233,20 @@ public class User {
         return true;
     }
 
+    /**
+     * Checks if the user input is valid
+     * @param temp the user input
+     * @return
+     *  true if the user input is valid
+     */
     private boolean isValid(String[] temp) {
         boolean flag = false;
 
         for(String str : temp){
-            for (SpecificNums.NumType t : SpecificNums.NumType.values()){
-                if(t.contains(exlude('-', str))){
+            for (SNT.NumType t : SNT.NumType.values()){
+                if(t.contains(exclude('-', str.toUpperCase()))){
                     flag = true;
+                    break;
                 }
             }
 
@@ -202,15 +256,12 @@ public class User {
             flag = false;
         }
 
-
         if(!errNumTypes.isEmpty()){
             errNumTypes.setLength(errNumTypes.length() - 2);
             return false;
         }
 
-
         return true;
-
     }
 
     /**
@@ -219,7 +270,7 @@ public class User {
      * @param str the string to remove the character from
      * @return the string without the character
      */
-    private String exlude(char c, String str) {
+    private String exclude(char c, String str) {
         StringBuilder sb = new StringBuilder();
         for(char d : str.toCharArray()){
             if(d != c){
@@ -227,15 +278,6 @@ public class User {
             }
         }
         return sb.toString();
-    }
-
-    private boolean isValid(String s) {
-        for(SpecificNums.NumType t : SpecificNums.NumType.values()){
-            if(s.equals(t.toString().toLowerCase())){
-                return true;
-            }
-        }
-        return false;
     }
 
     private void initWelcome() {
@@ -248,21 +290,23 @@ public class User {
                   * the first parameter represents a starting number;
                   * the second parameter shows how many consecutive numbers are to be processed;
                 - two natural numbers and properties to search for;
+                - a property preceded by minus must not be present in numbers;
                 - separate the parameters with one space;
                 - enter 0 to exit.
                 """);
     }
 
     public boolean isValid(Long v) { return v >= 0; }
-
-    public long getStoredValue(){ return this.value;}
     public Long getStoredValue(int index){ return this.valueList.get(index);}
     public long getUserEntries(int index){ return this.values[index];}
-
     public ArrayList<Long> getValueList(){ return this.valueList;}
 
-    public ArrayList<SpecificNums.NumType> getUserNumTypes(){
+    public ArrayList<SNT.NumType> getUserNumTypes(){
         return userNumTypes;
+    }
+
+    public ArrayList<Integer> getExclusions() {
+        return exclusions;
     }
 
     public void resetNumTypes() {
