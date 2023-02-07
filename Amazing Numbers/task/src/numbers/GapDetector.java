@@ -1,5 +1,8 @@
 package numbers;
 
+/**
+ * This class is used to detect if a number is a gapful number or not.
+ */
 public class GapDetector {
     private long divisor;
 
@@ -7,6 +10,13 @@ public class GapDetector {
         divisor = 10;
     }
 
+    /**
+     * This method is used to detect if a number is a gapful number or not.
+     * @param num
+     *  The number to be checked.
+     * @return
+     *  True if the number is a gapful number, false otherwise.
+     */
     public boolean detectGap(long num){
         if(num >= 100){
             divisor = getDivisor(num);

@@ -1,6 +1,13 @@
 
 package numbers;
+
+/**
+ * This class is used to store all the enums of the properties of a number that can be analyzed.
+ */
 public class SNT {
+    /**
+     * This enum is used to store all the possible conflicts a number can have.
+     */
     public enum Conflicts{
         EVEN,
         ODD,

@@ -2,6 +2,9 @@ package numbers;
 
 import java.util.ArrayList;
 
+/**
+ * This class is used to detect if a number is happy or not.
+ */
 public class HappyDetector {
 
     Long temp, sum, l;
@@ -13,6 +16,13 @@ public class HappyDetector {
         cachedValues = new ArrayList<>();
     }
 
+    /**
+     * This method is used to detect if a number is happy or not.
+     * @param num
+     *  The number to be checked.
+     * @return
+     *  True if the number is happy, false otherwise.
+     */
     public boolean detectHappy(Long num){
         cachedValues.clear();
         temp = num;

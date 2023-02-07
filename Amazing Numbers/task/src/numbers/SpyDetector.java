@@ -1,5 +1,9 @@
 package numbers;
 import java.util.ArrayList;
+
+/**
+ * This class is used to detect if a number is spy or not.
+ */
 public class SpyDetector {
     Long temp, sum, product, tempInt;
     ArrayList<Long> intArr;

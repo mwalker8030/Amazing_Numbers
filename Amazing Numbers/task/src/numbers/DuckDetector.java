@@ -1,5 +1,8 @@
 package numbers;
 
+/**
+ * This class is used to detect if a number is duck or not.
+ */
 public class DuckDetector {
     private boolean isDuck;
     private long temp;
@@ -7,6 +10,13 @@ public class DuckDetector {
 
     DuckDetector(){temp = 0; duck = 0;}
 
+    /**
+     * This method is used to detect if a number is duck or not.
+     * @param num
+     *  The number to be checked.
+     * @return
+     *  True if the number is duck, false otherwise.
+     */
     public boolean detectDucking(long num) {
         temp = num;
         while(temp > 0){

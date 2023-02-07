@@ -1,5 +1,8 @@
 package numbers;
 
+/**
+ * This class is used to detect if a number is palindrome or not.
+ */
 public class Palindrome {
 
     long temp;

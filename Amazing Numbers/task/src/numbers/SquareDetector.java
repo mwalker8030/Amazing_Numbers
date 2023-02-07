@@ -1,5 +1,8 @@
 package numbers;
 
+/**
+ * This class is used to detect if a number is square or not.
+ */
 public class SquareDetector {
 
     double sqrt;

@@ -3,7 +3,11 @@ package numbers;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * @author Michael Elmo Walker
+ */
 public class Properties {
+
 
     public enum Printer{
         SINGLE(1),
@@ -11,7 +15,7 @@ public class Properties {
 
         public final int printerType;
 
-        private Printer(int printerType){
+        Printer(int printerType){
             this.printerType = printerType;
         }
 
@@ -43,12 +47,6 @@ public class Properties {
     }
     public void incrementSequence() { ++sequenceCounter; }
 
-    public void setPrinter(int size) {
-        if(size > 0){
-            printer = Printer.MULTI;
-        }
-    }
-
     public void setPrinter(long size) {
         if(size > 0){
             printer = Printer.MULTI;
@@ -56,11 +54,16 @@ public class Properties {
     }
 
 
-
-    interface Detective{
-
+    /**
+     * This interface is used to detect properties of a number
+     */
+    interface Detective {
         boolean detect();
     }
+
+    /**
+     * This is a list of all the properties that can be detected in the form of an array of functions.
+     */
     private Detective[] detectives = new Detective[]{
             new Detective(){ public boolean detect(){return !oddDetective.evenOrOdd(storedValue);}},
             new Detective(){ public boolean detect(){return oddDetective.evenOrOdd(storedValue);}},
@@ -76,6 +79,10 @@ public class Properties {
             new Detective(){ public boolean detect(){return !happyDetective.detectHappy(storedValue);}}
 
     };
+
+    /**
+     * This Constructor is used to initialize the attributes and the list of properties
+     */
     Properties(){
         msg = new StringBuilder("");
         initAttributes();
@@ -124,6 +131,11 @@ public class Properties {
         happyDetective = new HappyDetector();
     }
 
+    /**
+     * This method is used to analyze a single number and store the properties of that number
+     * @param num
+     *  The number to be analyzed
+     */
     public void analyze(long num){
 
         //assign passed value to stored value
@@ -178,9 +190,21 @@ public class Properties {
         }
     }
 
-    public void analyze(long userEntries, ArrayList<SNT.NumType> userNumTypes, long val, ArrayList<Integer> exclusions) {
+    /**
+     * Analyze a range of numbers and store the properties of each number in a list, discard any number that has a property
+     *  this is excluded from the list of properties to be analyzed.
+     * @param userValue
+     *  The starting value of the range
+     * @param userNumTypes
+     *  The types of properties to be confirmed for the value to be successfully analyzed
+     * @param quantity
+     *  The quantity of numbers to be analyzed
+     * @param exclusions
+     *  The types of properties to be excluded from the analysis
+     */
+    public void analyze(long userValue, ArrayList<SNT.NumType> userNumTypes, long quantity, ArrayList<Integer> exclusions) {
         nsnt.clear();
-        storedValue = userEntries;
+        storedValue = userValue;
 
         for(SNT.NumType t : SNT.NumType.values()){
             if(!userNumTypes.contains(t) && !exclusions.contains(t.ordinal()) && t != SNT.NumType.DEFAULT && !exclusions.contains(t.ordinal())){
@@ -188,7 +212,7 @@ public class Properties {
             }
         }
 
-        for(long i = 0; i < val;){
+        for(long i = 0; i < quantity;){
 
             if(detectSpecifics(userNumTypes, exclusions)){
                 for(int ind : nsnt){
@@ -209,6 +233,13 @@ public class Properties {
         }
     }
 
+    /**
+     * This method is used to detect a specific property of a number
+     * @param specifics
+     *  The specific property to be detected
+     * @return
+     *  True if the property is detected, false otherwise
+     */
     private boolean detectSpecifics(ArrayList<SNT.NumType> specifics) {
         for(SNT.NumType t : specifics){
             if(!detectives[t.ordinal()].detect()){
@@ -220,6 +251,16 @@ public class Properties {
     }
 
 
+    /**
+     * This method is used to detect a specific property of a number, and fail if any of the properties in the exclusion list
+     * are detected.
+     * @param userNumTypes
+     *  The specific properties to be detected
+     * @param exclusions
+     *  The specific properties to be excluded from the analysis
+     * @return
+     *  True if the property is detected, false otherwise
+     */
     private boolean detectSpecifics(ArrayList<SNT.NumType> userNumTypes, ArrayList<Integer> exclusions) {
         for(SNT.NumType t : userNumTypes){
             for(int i : exclusions){
@@ -238,21 +279,20 @@ public class Properties {
         return true;
     }
 
+    /**
+     * This method is used to set all of the properties in the exclusion list to false
+     * @param exclusions
+     *  The list of properties to be set to false
+     */
     private void setAllFalse(ArrayList<Integer> exclusions) {
         for(int i : exclusions){
             detailedList.set(i, new Property(attributes.get(i), false));
         }
     }
 
-    public void analyzeList(long num){
-
-        msg = new StringBuilder();
-
-        for(int i = 0; i < attributes.size(); i++)
-            detailedList.set(i, new Property(attributes.get(i),detectives[i].detect()));
-        saveListOfProperties();
-    }
-
+    /**
+     * This method is used to save the properties of a number to a string
+     */
     private void saveProperties() {
         msg.append("\nProperties of %,d\n" .formatted(storedValue));
         for(Property prop : detailedList){
@@ -261,6 +301,9 @@ public class Properties {
         msg.setLength(msg.length() - 1);
     }
 
+    /**
+     * This method is used to save the properties of a number to a string
+     */
     private void saveListOfProperties() {
         msg.append("\n%,16d is ".formatted(storedValue));
         for(Property prop : detailedList){
@@ -273,13 +316,18 @@ public class Properties {
         msg.setLength(msg.length() - 2);
     }
 
+    /**
+     * This method is used to display the properties of a number or numbers
+     */
     public void displayProperties() {
         System.out.println(msg.toString() + "\n");
     }
 
+    /**
+     * This method is used to reset the list of properties to false
+     */
     private void resetList(){
         for(int i = 0; i < attributes.size(); i++)
             detailedList.get(i).setData(false);
     }
-    public void storeUserInput(long storedValue) { this.storedValue = storedValue; }
 }

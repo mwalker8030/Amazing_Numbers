@@ -1,5 +1,8 @@
 package numbers;
 
+/**
+ * This class is used to detect if a number is jump or not.
+ */
 public class JumpDetector {
     private Long prev, curr;
 
