@@ -28,7 +28,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> -19
+Enter a request:> -43
 
 8The first parameter should be a natural number or zero.
 
@@ -48,7 +48,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> -30
+Enter a request:> -43
 
 8The first parameter should be a natural number or zero.
 
@@ -68,7 +68,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> -124
+Enter a request:> -16
 
 8The first parameter should be a natural number or zero.
 
@@ -88,7 +88,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> -112
+Enter a request:> -83
 
 8The first parameter should be a natural number or zero.
 
@@ -108,7 +108,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> -31
+Enter a request:> -40
 
 8The first parameter should be a natural number or zero.
 
@@ -128,7 +128,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 22308 -24779
+Enter a request:> 5427 -14451
 
 1The second parameter should be a natural number.
 
@@ -148,7 +148,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 3001 -7198
+Enter a request:> 30062 -29053
 
 1The second parameter should be a natural number.
 
@@ -168,7 +168,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 17063 -7358
+Enter a request:> 14945 -17435
 
 1The second parameter should be a natural number.
 
@@ -188,7 +188,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 4116 -5969
+Enter a request:> 11204 -13313
 
 1The second parameter should be a natural number.
 
@@ -208,7 +208,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 12086 -32435
+Enter a request:> 11552 -6866
 
 1The second parameter should be a natural number.
 
@@ -228,7 +228,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 9007 -6008
+Enter a request:> 12799 -26188
 
 1The second parameter should be a natural number.
 
@@ -248,7 +248,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 20523 -25293
+Enter a request:> 29085 -30651
 
 1The second parameter should be a natural number.
 
@@ -268,7 +268,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 12780 -26255
+Enter a request:> 531 -19451
 
 1The second parameter should be a natural number.
 
@@ -288,7 +288,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 18851 -200
+Enter a request:> 21107 -10174
 
 1The second parameter should be a natural number.
 
@@ -308,7 +308,7 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 13828 -2610
+Enter a request:> 4566 -25435
 
 1The second parameter should be a natural number.
 
@@ -552,9 +552,9 @@
            happy: false
              sad: true
 
-&Enter a request:> 6095788654450803029
+&Enter a request:> 6252563011266910019
 
-(Properties of 6,095,788,654,450,803,029
+(Properties of 6,252,563,011,266,910,019
             even: false
              odd: true
             buzz: false
@@ -568,9 +568,9 @@
            happy: false
              sad: true
 
-&Enter a request:> 3517487767594524902
+&Enter a request:> 6304626409862861968
 
-(Properties of 3,517,487,767,594,524,902
+(Properties of 6,304,626,409,862,861,968
             even: true
              odd: false
             buzz: false
@@ -584,9 +584,57 @@
            happy: false
              sad: true
 
-&Enter a request:> 8743274880467114518
+&Enter a request:> 4617368797131725822
 
-(Properties of 8,743,274,880,467,114,518
+(Properties of 4,617,368,797,131,725,822
+            even: true
+             odd: false
+            buzz: false
+            duck: false
+     palindromic: false
+          gapful: false
+             spy: false
+          square: false
+           sunny: false
+         jumping: false
+           happy: false
+             sad: true
+
+&Enter a request:> 5935055321478065429
+
+(Properties of 5,935,055,321,478,065,429
+            even: false
+             odd: true
+            buzz: false
+            duck: true
+     palindromic: false
+          gapful: false
+             spy: false
+          square: false
+           sunny: false
+         jumping: false
+           happy: false
+             sad: true
+
+&Enter a request:> 7445934619295899513
+
+(Properties of 7,445,934,619,295,899,513
+            even: false
+             odd: true
+            buzz: false
+            duck: false
+     palindromic: false
+          gapful: false
+             spy: false
+          square: false
+           sunny: false
+         jumping: false
+           happy: false
+             sad: true
+
+&Enter a request:> 3900621507029832216
+
+(Properties of 3,900,621,507,029,832,216
             even: true
              odd: false
             buzz: false
@@ -600,9 +648,9 @@
            happy: false
              sad: true
 
-&Enter a request:> 1577913363182711808
+&Enter a request:> 1787429326361699690
 
-(Properties of 1,577,913,363,182,711,808
+(Properties of 1,787,429,326,361,699,690
             even: true
              odd: false
             buzz: false
@@ -616,9 +664,9 @@
            happy: false
              sad: true
 
-&Enter a request:> 8544898262697090588
+&Enter a request:> 2265130151895818606
 
-(Properties of 8,544,898,262,697,090,588
+(Properties of 2,265,130,151,895,818,606
             even: true
              odd: false
             buzz: true
@@ -632,13 +680,13 @@
            happy: false
              sad: true
 
-&Enter a request:> 1804827444692682685
+&Enter a request:> 1543342863822138367
 
-(Properties of 1,804,827,444,692,682,685
+(Properties of 1,543,342,863,822,138,367
             even: false
              odd: true
-            buzz: false
-            duck: true
+            buzz: true
+            duck: false
      palindromic: false
           gapful: false
              spy: false
@@ -648,43 +696,11 @@
            happy: false
              sad: true
 
-&Enter a request:> 7190011484716595383
+&Enter a request:> 3427783556967015790
 
-(Properties of 7,190,011,484,716,595,383
-            even: false
-             odd: true
-            buzz: false
-            duck: true
-     palindromic: false
-          gapful: false
-             spy: false
-          square: false
-           sunny: false
-         jumping: false
-           happy: false
-             sad: true
-
-%Enter a request:> 756499610808710554
-
-&Properties of 756,499,610,808,710,554
+(Properties of 3,427,783,556,967,015,790
             even: true
              odd: false
-            buzz: false
-            duck: true
-     palindromic: false
-          gapful: false
-             spy: false
-          square: false
-           sunny: false
-         jumping: false
-           happy: false
-             sad: true
-
-&Enter a request:> 1596024183914132451
-
-(Properties of 1,596,024,183,914,132,451
-            even: false
-             odd: true
             buzz: false
             duck: true
      palindromic: false
@@ -695,22 +711,6 @@
          jumping: false
            happy: true
              sad: false
-
-&Enter a request:> 1367523460138285502
-
-(Properties of 1,367,523,460,138,285,502
-            even: true
-             odd: false
-            buzz: false
-            duck: true
-     palindromic: false
-          gapful: false
-             spy: false
-          square: false
-           sunny: false
-         jumping: false
-           happy: false
-             sad: true
 
 Enter a request:> 0
 
@@ -762,11 +762,16 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-(Enter a request:> 4426403740353809750 3
+(Enter a request:> 4019498923925641322 8
 
--4,426,403,740,353,809,750 is even, duck, sad
-,4,426,403,740,353,809,751 is odd, duck, sad
--4,426,403,740,353,809,752 is even, duck, sad
+-4,019,498,923,925,641,322 is even, duck, sad
+,4,019,498,923,925,641,323 is odd, duck, sad
+34,019,498,923,925,641,324 is even, buzz, duck, sad
+,4,019,498,923,925,641,325 is odd, duck, sad
+/4,019,498,923,925,641,326 is even, duck, happy
+24,019,498,923,925,641,327 is odd, buzz, duck, sad
+-4,019,498,923,925,641,328 is even, duck, sad
+,4,019,498,923,925,641,329 is odd, duck, sad
 
 Enter a request:> 0
 
@@ -784,12 +789,28 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-(Enter a request:> 4129004610315838674 4
+)Enter a request:> 4090620738265485826 20
 
--4,129,004,610,315,838,674 is even, duck, sad
-,4,129,004,610,315,838,675 is odd, duck, sad
--4,129,004,610,315,838,676 is even, duck, sad
-24,129,004,610,315,838,677 is odd, buzz, duck, sad
+-4,090,620,738,265,485,826 is even, duck, sad
+24,090,620,738,265,485,827 is odd, buzz, duck, sad
+-4,090,620,738,265,485,828 is even, duck, sad
+,4,090,620,738,265,485,829 is odd, duck, sad
+34,090,620,738,265,485,830 is even, buzz, duck, sad
+,4,090,620,738,265,485,831 is odd, duck, sad
+-4,090,620,738,265,485,832 is even, duck, sad
+,4,090,620,738,265,485,833 is odd, duck, sad
+-4,090,620,738,265,485,834 is even, duck, sad
+,4,090,620,738,265,485,835 is odd, duck, sad
+-4,090,620,738,265,485,836 is even, duck, sad
+24,090,620,738,265,485,837 is odd, buzz, duck, sad
+/4,090,620,738,265,485,838 is even, duck, happy
+,4,090,620,738,265,485,839 is odd, duck, sad
+54,090,620,738,265,485,840 is even, duck, gapful, sad
+,4,090,620,738,265,485,841 is odd, duck, sad
+-4,090,620,738,265,485,842 is even, duck, sad
+,4,090,620,738,265,485,843 is odd, duck, sad
+34,090,620,738,265,485,844 is even, buzz, duck, sad
+,4,090,620,738,265,485,845 is odd, duck, sad
 
 Enter a request:> 0
 
@@ -807,12 +828,27 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-(Enter a request:> 8297011276445488495 4
+)Enter a request:> 2004847889360685021 19
 
-,8,297,011,276,445,488,495 is odd, duck, sad
-/8,297,011,276,445,488,496 is even, duck, happy
-28,297,011,276,445,488,497 is odd, buzz, duck, sad
--8,297,011,276,445,488,498 is even, duck, sad
+,2,004,847,889,360,685,021 is odd, duck, sad
+/2,004,847,889,360,685,022 is even, duck, happy
+,2,004,847,889,360,685,023 is odd, duck, sad
+52,004,847,889,360,685,024 is even, duck, gapful, sad
+42,004,847,889,360,685,025 is odd, duck, gapful, sad
+32,004,847,889,360,685,026 is even, buzz, duck, sad
+22,004,847,889,360,685,027 is odd, buzz, duck, sad
+-2,004,847,889,360,685,028 is even, duck, sad
+,2,004,847,889,360,685,029 is odd, duck, sad
+-2,004,847,889,360,685,030 is even, duck, sad
+,2,004,847,889,360,685,031 is odd, duck, sad
+-2,004,847,889,360,685,032 is even, duck, sad
+22,004,847,889,360,685,033 is odd, buzz, duck, sad
+-2,004,847,889,360,685,034 is even, duck, sad
+,2,004,847,889,360,685,035 is odd, duck, sad
+-2,004,847,889,360,685,036 is even, duck, sad
+22,004,847,889,360,685,037 is odd, buzz, duck, sad
+-2,004,847,889,360,685,038 is even, duck, sad
+,2,004,847,889,360,685,039 is odd, duck, sad
 
 Enter a request:> 0
 
@@ -830,17 +866,12 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-(Enter a request:> 3340244470826890218 9
+(Enter a request:> 4900402952630842401 4
 
--3,340,244,470,826,890,218 is even, duck, sad
-,3,340,244,470,826,890,219 is odd, duck, sad
-/3,340,244,470,826,890,220 is even, duck, happy
-23,340,244,470,826,890,221 is odd, buzz, duck, sad
--3,340,244,470,826,890,222 is even, duck, sad
-,3,340,244,470,826,890,223 is odd, duck, sad
--3,340,244,470,826,890,224 is even, duck, sad
-,3,340,244,470,826,890,225 is odd, duck, sad
--3,340,244,470,826,890,226 is even, duck, sad
+,4,900,402,952,630,842,401 is odd, duck, sad
+/4,900,402,952,630,842,402 is even, duck, happy
+,4,900,402,952,630,842,403 is odd, duck, sad
+54,900,402,952,630,842,404 is even, duck, gapful, sad
 
 Enter a request:> 0
 
@@ -858,18 +889,17 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-)Enter a request:> 4309728000146331641 10
+(Enter a request:> 2749814844918899618 9
 
-,4,309,728,000,146,331,641 is odd, duck, sad
--4,309,728,000,146,331,642 is even, duck, sad
-.4,309,728,000,146,331,643 is odd, duck, happy
-34,309,728,000,146,331,644 is even, buzz, duck, sad
-,4,309,728,000,146,331,645 is odd, duck, sad
-/4,309,728,000,146,331,646 is even, duck, happy
-24,309,728,000,146,331,647 is odd, buzz, duck, sad
-54,309,728,000,146,331,648 is even, duck, gapful, sad
-,4,309,728,000,146,331,649 is odd, duck, sad
-/4,309,728,000,146,331,650 is even, duck, happy
+-2,749,814,844,918,899,618 is even, buzz, sad
+&2,749,814,844,918,899,619 is odd, sad
+72,749,814,844,918,899,620 is even, duck, gapful, happy
+&2,749,814,844,918,899,621 is odd, sad
+'2,749,814,844,918,899,622 is even, sad
+(2,749,814,844,918,899,623 is odd, happy
+'2,749,814,844,918,899,624 is even, sad
+42,749,814,844,918,899,625 is odd, buzz, gapful, sad
+'2,749,814,844,918,899,626 is even, sad
 
 Enter a request:> 0
 
@@ -887,10 +917,18 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-(Enter a request:> 7777001033235342489 2
+)Enter a request:> 3948753019664577011 10
 
-27,777,001,033,235,342,489 is odd, buzz, duck, sad
-/7,777,001,033,235,342,490 is even, duck, happy
+,3,948,753,019,664,577,011 is odd, duck, sad
+33,948,753,019,664,577,012 is even, buzz, duck, sad
+.3,948,753,019,664,577,013 is odd, duck, happy
+73,948,753,019,664,577,014 is even, duck, gapful, happy
+,3,948,753,019,664,577,015 is odd, duck, sad
+-3,948,753,019,664,577,016 is even, duck, sad
+23,948,753,019,664,577,017 is odd, buzz, duck, sad
+-3,948,753,019,664,577,018 is even, duck, sad
+23,948,753,019,664,577,019 is odd, buzz, duck, sad
+-3,948,753,019,664,577,020 is even, duck, sad
 
 Enter a request:> 0
 
@@ -908,28 +946,25 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-)Enter a request:> 6849275209176015486 20
+(Enter a request:> 634953012317610137 17
 
--6,849,275,209,176,015,486 is even, duck, sad
-26,849,275,209,176,015,487 is odd, buzz, duck, sad
--6,849,275,209,176,015,488 is even, duck, sad
-,6,849,275,209,176,015,489 is odd, duck, sad
-36,849,275,209,176,015,490 is even, buzz, duck, sad
-,6,849,275,209,176,015,491 is odd, duck, sad
--6,849,275,209,176,015,492 is even, duck, sad
-,6,849,275,209,176,015,493 is odd, duck, sad
--6,849,275,209,176,015,494 is even, duck, sad
-,6,849,275,209,176,015,495 is odd, duck, sad
--6,849,275,209,176,015,496 is even, duck, sad
-26,849,275,209,176,015,497 is odd, buzz, duck, sad
--6,849,275,209,176,015,498 is even, duck, sad
-,6,849,275,209,176,015,499 is odd, duck, sad
--6,849,275,209,176,015,500 is even, duck, sad
-,6,849,275,209,176,015,501 is odd, duck, sad
--6,849,275,209,176,015,502 is even, duck, sad
-,6,849,275,209,176,015,503 is odd, duck, sad
-36,849,275,209,176,015,504 is even, buzz, duck, sad
-,6,849,275,209,176,015,505 is odd, duck, sad
+0634,953,012,317,610,137 is odd, buzz, duck, sad
++634,953,012,317,610,138 is even, duck, sad
+,634,953,012,317,610,139 is odd, duck, happy
+1634,953,012,317,610,140 is even, buzz, duck, sad
+*634,953,012,317,610,141 is odd, duck, sad
++634,953,012,317,610,142 is even, duck, sad
+*634,953,012,317,610,143 is odd, duck, sad
+-634,953,012,317,610,144 is even, duck, happy
+,634,953,012,317,610,145 is odd, duck, happy
++634,953,012,317,610,146 is even, duck, sad
+0634,953,012,317,610,147 is odd, buzz, duck, sad
++634,953,012,317,610,148 is even, duck, sad
+*634,953,012,317,610,149 is odd, duck, sad
++634,953,012,317,610,150 is even, duck, sad
+*634,953,012,317,610,151 is odd, duck, sad
++634,953,012,317,610,152 is even, duck, sad
+*634,953,012,317,610,153 is odd, duck, sad
 
 Enter a request:> 0
 
@@ -947,12 +982,19 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-'Enter a request:> 885703885032251720 4
+)Enter a request:> 5240918621625278050 11
 
-+885,703,885,032,251,720 is even, duck, sad
-*885,703,885,032,251,721 is odd, duck, sad
--885,703,885,032,251,722 is even, duck, happy
-,885,703,885,032,251,723 is odd, duck, happy
+55,240,918,621,625,278,050 is even, duck, gapful, sad
+.5,240,918,621,625,278,051 is odd, duck, happy
+-5,240,918,621,625,278,052 is even, duck, sad
+25,240,918,621,625,278,053 is odd, buzz, duck, sad
+-5,240,918,621,625,278,054 is even, duck, sad
+.5,240,918,621,625,278,055 is odd, duck, happy
+-5,240,918,621,625,278,056 is even, duck, sad
+25,240,918,621,625,278,057 is odd, buzz, duck, sad
+55,240,918,621,625,278,058 is even, duck, gapful, sad
+,5,240,918,621,625,278,059 is odd, duck, sad
+35,240,918,621,625,278,060 is even, buzz, duck, sad
 
 Enter a request:> 0
 
@@ -970,28 +1012,13 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-)Enter a request:> 1045370330906998657 20
+(Enter a request:> 7850378327535754042 5
 
-21,045,370,330,906,998,657 is odd, buzz, duck, sad
--1,045,370,330,906,998,658 is even, duck, sad
-,1,045,370,330,906,998,659 is odd, duck, sad
-51,045,370,330,906,998,660 is even, duck, gapful, sad
-,1,045,370,330,906,998,661 is odd, duck, sad
--1,045,370,330,906,998,662 is even, duck, sad
-21,045,370,330,906,998,663 is odd, buzz, duck, sad
--1,045,370,330,906,998,664 is even, duck, sad
-41,045,370,330,906,998,665 is odd, duck, gapful, sad
--1,045,370,330,906,998,666 is even, duck, sad
-21,045,370,330,906,998,667 is odd, buzz, duck, sad
--1,045,370,330,906,998,668 is even, duck, sad
-41,045,370,330,906,998,669 is odd, duck, gapful, sad
-;1,045,370,330,906,998,670 is even, buzz, duck, gapful, sad
-,1,045,370,330,906,998,671 is odd, duck, sad
--1,045,370,330,906,998,672 is even, duck, sad
-,1,045,370,330,906,998,673 is odd, duck, sad
--1,045,370,330,906,998,674 is even, duck, sad
-,1,045,370,330,906,998,675 is odd, duck, sad
--1,045,370,330,906,998,676 is even, duck, sad
+-7,850,378,327,535,754,042 is even, duck, sad
+.7,850,378,327,535,754,043 is odd, duck, happy
+-7,850,378,327,535,754,044 is even, duck, sad
+27,850,378,327,535,754,045 is odd, buzz, duck, sad
+-7,850,378,327,535,754,046 is even, duck, sad
 
 Enter a request:> 0
 
@@ -1009,20 +1036,15 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-)Enter a request:> 2382472859921594865 12
+(Enter a request:> 2110496941133808328 7
 
-(2,382,472,859,921,594,865 is odd, happy
-'2,382,472,859,921,594,866 is even, sad
-,2,382,472,859,921,594,867 is odd, buzz, sad
-'2,382,472,859,921,594,868 is even, sad
-(2,382,472,859,921,594,869 is odd, happy
--2,382,472,859,921,594,870 is even, duck, sad
-&2,382,472,859,921,594,871 is odd, sad
-'2,382,472,859,921,594,872 is even, sad
-&2,382,472,859,921,594,873 is odd, sad
--2,382,472,859,921,594,874 is even, buzz, sad
-.2,382,472,859,921,594,875 is odd, gapful, sad
-'2,382,472,859,921,594,876 is even, sad
+-2,110,496,941,133,808,328 is even, duck, sad
+.2,110,496,941,133,808,329 is odd, duck, happy
+-2,110,496,941,133,808,330 is even, duck, sad
+,2,110,496,941,133,808,331 is odd, duck, sad
+32,110,496,941,133,808,332 is even, buzz, duck, sad
+,2,110,496,941,133,808,333 is odd, duck, sad
+-2,110,496,941,133,808,334 is even, duck, sad
 
 Enter a request:> 0
 
@@ -1359,15 +1381,21 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-&Enter a request:> 16556 7 PALINDROMIC
+!Enter a request:> 10424 13 SUNNY
 
-*          16,561 is odd, palindromic, sad
-*          16,661 is odd, palindromic, sad
-*          16,761 is odd, palindromic, sad
-*          16,861 is odd, palindromic, sad
-0          16,961 is odd, buzz, palindromic, sad
-2          17,071 is odd, duck, palindromic, happy
-8          17,171 is odd, buzz, palindromic, gapful, sad
++          10,608 is even, duck, sunny, sad
+:          10,815 is odd, buzz, duck, gapful, sunny, happy
++          11,024 is even, duck, sunny, sad
+2          11,235 is odd, buzz, gapful, sunny, sad
+-          11,448 is even, gapful, sunny, sad
+$          11,663 is odd, sunny, sad
+5          11,880 is even, duck, gapful, sunny, happy
+,          12,099 is odd, duck, sunny, happy
+9          12,320 is even, buzz, duck, gapful, sunny, sad
+$          12,543 is odd, sunny, sad
++          12,768 is even, buzz, sunny, sad
+&          12,995 is odd, sunny, happy
+%          13,224 is even, sunny, sad
 
 Enter a request:> 0
 
@@ -1385,14 +1413,18 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 50 6 HAPPY
+!Enter a request:> 14063 10 SUNNY
 
-               68 is even, happy
-,              70 is even, buzz, duck, happy
-              79 is odd, happy
-               82 is even, happy
-               86 is even, happy
-%              91 is odd, buzz, happy
+3          14,160 is even, duck, gapful, sunny, sad
+,          14,399 is odd, buzz, sunny, happy
+3          14,640 is even, duck, gapful, sunny, sad
+$          14,883 is odd, sunny, sad
+%          15,128 is even, sunny, sad
+.          15,375 is odd, gapful, sunny, happy
+5          15,624 is even, buzz, gapful, sunny, happy
+$          15,875 is odd, sunny, sad
+3          16,128 is even, buzz, gapful, sunny, sad
+$          16,383 is odd, sunny, sad
 
 Enter a request:> 0
 
@@ -1410,28 +1442,17 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
- Enter a request:> 250 20 GAPFUL
+ Enter a request:> 29289 9 HAPPY
 
-%             253 is odd, gapful, sad
-,             260 is even, duck, gapful, sad
-&             264 is even, gapful, sad
-%             275 is odd, gapful, sad
-4             280 is even, buzz, duck, gapful, happy
-&             286 is even, gapful, sad
-+             297 is odd, buzz, gapful, sad
-,             300 is even, duck, gapful, sad
-+             315 is odd, buzz, gapful, sad
-,             330 is even, duck, gapful, sad
-%             341 is odd, gapful, sad
-&             352 is even, gapful, sad
-3             360 is even, duck, gapful, sunny, sad
-2             363 is odd, palindromic, gapful, sad
-&             374 is even, gapful, sad
-+             385 is odd, buzz, gapful, sad
-,             390 is even, duck, gapful, sad
-&             396 is even, gapful, sad
-4             400 is even, duck, gapful, square, sad
-+             405 is odd, duck, gapful, sad
+%          29,297 is odd, buzz, happy
+.          29,300 is even, duck, gapful, happy
+%          29,303 is odd, duck, happy
+&          29,306 is even, duck, happy
+'          29,319 is odd, gapful, happy
+,          29,330 is even, buzz, duck, happy
+           29,336 is even, happy
+           29,338 is even, happy
+.          29,360 is even, duck, gapful, happy
 
 Enter a request:> 0
 
@@ -1449,10 +1470,25 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 32661 2 SPY
+!Enter a request:> 21800 17 HAPPY
 
-"          33,111 is odd, spy, sad
-%          51,112 is even, spy, happy
+%          21,801 is odd, duck, happy
++          21,805 is odd, buzz, duck, happy
+&          21,808 is even, duck, happy
+&          21,810 is even, duck, happy
+          21,813 is odd, happy
+           21,814 is even, happy
+          21,823 is odd, happy
+&          21,826 is even, buzz, happy
+          21,831 is odd, happy
+           21,832 is even, happy
+           21,834 is even, happy
+          21,835 is odd, happy
+          21,841 is odd, happy
+          21,843 is odd, happy
+&          21,850 is even, duck, happy
+          21,853 is odd, happy
+           21,856 is even, happy
 
 Enter a request:> 0
 
@@ -1470,10 +1506,25 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-!Enter a request:> 22385 2 SQUARE
+"Enter a request:> 2601 17 JUMPING
 
-4          22,500 is even, duck, gapful, square, sad
-+          22,801 is odd, duck, square, sad
+5           3,210 is even, duck, gapful, jumping, sad
+'           3,212 is even, jumping, sad
+/           3,232 is even, gapful, jumping, sad
+-           3,234 is even, buzz, jumping, sad
+'           3,432 is even, jumping, sad
+/           3,434 is even, gapful, jumping, sad
+'           3,454 is even, jumping, sad
+1           3,456 is even, gapful, jumping, happy
+&           4,321 is odd, jumping, sad
+&           4,323 is odd, jumping, sad
+.           4,343 is odd, gapful, jumping, sad
+&           4,345 is odd, jumping, sad
+,           4,543 is odd, buzz, jumping, sad
+0           4,545 is odd, gapful, jumping, happy
+&           4,565 is odd, jumping, sad
+,           4,567 is odd, buzz, jumping, sad
+-           5,432 is even, buzz, jumping, sad
 
 Enter a request:> 0
 
@@ -1491,27 +1542,10 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 17793 19 SPY
+Enter a request:> 8289 2 SPY
 
-$          21,115 is odd, spy, happy
-#          21,122 is even, spy, sad
-$          21,151 is odd, spy, happy
-9          21,212 is even, palindromic, spy, jumping, sad
-"          21,221 is odd, spy, sad
-*          21,511 is odd, buzz, spy, happy
-#          22,112 is even, spy, sad
-"          22,121 is odd, spy, sad
-(          22,211 is odd, buzz, spy, sad
-$          25,111 is odd, spy, happy
-/          31,113 is odd, palindromic, spy, sad
-"          31,131 is odd, spy, sad
-(          31,311 is odd, buzz, spy, sad
-"          33,111 is odd, spy, sad
-%          51,112 is even, spy, happy
-*          51,121 is odd, buzz, spy, happy
-$          51,211 is odd, spy, happy
-$          52,111 is odd, spy, happy
-%         111,126 is even, spy, happy
+$          11,125 is odd, spy, happy
+"          11,133 is odd, spy, sad
 
 Enter a request:> 0
 
@@ -1529,12 +1563,20 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
- Enter a request:> 1375 4 SQUARE
+ Enter a request:> 22437 12 EVEN
 
-(           1,444 is even, square, happy
-'           1,521 is odd, square, happy
-4           1,600 is even, duck, gapful, square, sad
-%           1,681 is odd, square, sad
+           22,438 is even, happy
+,          22,440 is even, duck, gapful, sad
+&          22,442 is even, buzz, happy
+          22,444 is even, sad
+          22,446 is even, sad
+          22,448 is even, sad
+&          22,450 is even, duck, happy
+          22,452 is even, sad
+          22,454 is even, sad
+$          22,456 is even, buzz, sad
+          22,458 is even, sad
+,          22,460 is even, duck, gapful, sad
 
 Enter a request:> 0
 
@@ -1552,13 +1594,19 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 7616 5 SAD
+Enter a request:> 8947 11 DUCK
 
-$           7,616 is even, buzz, sad
-#           7,617 is odd, buzz, sad
-           7,618 is even, sad
-$           7,620 is even, duck, sad
-           7,621 is odd, sad
+$           8,950 is even, duck, sad
+2           8,960 is even, buzz, duck, gapful, sad
+$           8,970 is even, duck, sad
+$           8,980 is even, duck, sad
+&           8,990 is even, duck, happy
+,           9,000 is even, duck, gapful, sad
+%           9,001 is odd, duck, happy
+*           9,002 is even, buzz, duck, sad
+#           9,003 is odd, duck, sad
+&           9,004 is even, duck, happy
+#           9,005 is odd, duck, sad
 
 Enter a request:> 0
 
@@ -1576,11 +1624,12 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request:> 28699 3 ODD
+Enter a request:> 9772 4 EVEN
 
-          28,699 is odd, sad
-#          28,701 is odd, duck, sad
-#          28,703 is odd, duck, sad
+$           9,772 is even, buzz, sad
+           9,774 is even, sad
+           9,776 is even, sad
+           9,778 is even, sad
 
 Enter a request:> 0
 
@@ -1598,13 +1647,27 @@
 *- separate the parameters with one space;
 - enter 0 to exit.
 
- Enter a request:> 21251 5 HAPPY
+'Enter a request:> 11429 19 PALINDROMIC
 
-           21,256 is even, happy
-           21,262 is even, happy
-          21,265 is odd, happy
-%          21,267 is odd, buzz, happy
-           21,268 is even, happy
+*          11,511 is odd, palindromic, sad
+*          11,611 is odd, palindromic, sad
+0          11,711 is odd, buzz, palindromic, sad
+,          11,811 is odd, palindromic, happy
+*          11,911 is odd, palindromic, sad
+2          12,021 is odd, duck, palindromic, happy
+3          12,121 is odd, palindromic, jumping, sad
+7          12,221 is odd, palindromic, gapful, spy, sad
+=          12,321 is odd, palindromic, square, jumping, happy
+*          12,421 is odd, palindromic, sad
+*          12,521 is odd, palindromic, sad
+0          12,621 is odd, buzz, palindromic, sad
+*          12,721 is odd, palindromic, sad
+*          12,821 is odd, palindromic, sad
+,          12,921 is odd, palindromic, happy
+0          13,031 is odd, duck, palindromic, sad
+/          13,131 is odd, palindromic, spy, sad
+*          13,231 is odd, palindromic, sad
+*          13,331 is odd, palindromic, sad
 
 Enter a request:> 0
 
