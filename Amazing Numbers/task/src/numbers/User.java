@@ -40,7 +40,7 @@ public class User {
             String[] temp = input.toString().split(" ");
 
             //assign value to index regardless of result
-            if(!isNumber(temp[0])){
+            if(isNotNumber(temp[0])){
                 throw new UserInputException
                         ("\nThe first parameter should be a natural number or zero.");
             }
@@ -49,7 +49,7 @@ public class User {
             //if there are two parts
             if(temp.length >= 2){
                 //get the sequence amount
-                if(!isNumber(temp[1])){
+                if(isNotNumber(temp[1])){
                     throw new UserInputException("\nThe second parameter should be a natural number.");
                 }
                 values[1] = Long.parseLong(temp[1]);
@@ -135,7 +135,7 @@ public class User {
 
     private void addNumTypeExclusions(char c, String[] temp, ArrayList<SNT.NumType> userNumTypes) {
         for(String str : temp){
-            if(!isNumber(str) && str.contains("-")){
+            if(isNotNumber(str) && str.contains("-")){
                 for(SNT.NumType t : userNumTypes){
                     if(t.toString().equalsIgnoreCase(exclude(c, str))){
                         exclusions.add(t.ordinal());
@@ -145,31 +145,24 @@ public class User {
         }
     }
 
-    /**
-     * Checks if the user input contains a paradox
-     * @return
-     *  true if there is a paradox
-     */
+
     private boolean containsParadox(StringBuilder str) {
 
         String[] temp = str.toString().split(" ");
-        for(int i = 0; i < temp.length; i++){
-            for(int j = 0; j < temp.length; j++){
-                SNT.NumType tempType = SNT.NumType.valueOf(exclude('-', temp[i].toUpperCase()));
-                SNT.NumType tempConflict = SNT.NumType.valueOf(exclude('-', temp[j].toUpperCase()));
-                if(i != j){
-                    if(checkTwinException(tempType, tempConflict)) {
+        for (int i = 0; i < temp.length; i++) {
+            for (int j = 0; j < temp.length; j++) {
+
+                if (i != j) {
+
+                    SNT.NumType tempType = SNT.NumType.valueOf(exclude('-', temp[i].toUpperCase()));
+                    SNT.NumType tempConflict = SNT.NumType.valueOf(exclude('-', temp[j].toUpperCase()));
+
+                    if (checkTwinException(tempType, tempConflict)) {
                         problemTypes.append(temp[i]).append(" ").append(temp[j]);
                         return true;
                     } else if (checkForConflict(tempType, tempConflict)){
                         problemTypes.append(temp[i]).append(" ").append(temp[j]);
                         return true;
-                    } else if(!exclusions.isEmpty()){
-                        if(exclusiveParadox(temp[i], temp[j])) {
-                            problemTypes.append(temp[i]).append(" ").append(temp[j]);
-                            return true;
-                        }
-
                     }
 
                 }
@@ -179,8 +172,17 @@ public class User {
     }
 
     private boolean checkForConflict(SNT.NumType tempType, SNT.NumType tempConflict) {
-        if (tempType.getConflict().name().equals(tempConflict.name())
-            && !exclusions.contains(tempType.ordinal())){
+        if (tempType.getConflict().name().equals(tempConflict.name())){
+            if(exclusions.contains(tempType.ordinal())){
+                if(!exclusions.contains(SNT.NumType.valueOf(tempConflict.name()).ordinal())){
+                    return false;
+                }
+            }
+            if(exclusions.contains(SNT.NumType.valueOf(tempConflict.name()).ordinal())){
+                if(!exclusions.contains(tempType.ordinal())){
+                    return false;
+                }
+            }
             return true;
         }
         return false;
@@ -194,10 +196,7 @@ public class User {
     }
 
     private boolean exclusionAmongGroup(SNT.NumType numType, SNT.NumType numType1) {
-        if(isExcluded(numType).equals("-") || isExcluded(numType1).equals("-")){
-            return true;
-        }
-        return false;
+        return isExcluded(numType).equals("-") || isExcluded(numType1).equals("-");
     }
 
     private String isExcluded(SNT.NumType numType) {
@@ -207,30 +206,14 @@ public class User {
         return "";
     }
 
-    private boolean exclusiveParadox(SNT.NumType t, SNT.NumType errCheck) {
-        if(exclusions.contains(t.ordinal()) && exclusions.contains(errCheck.ordinal())){
-            return true;
-        }
-        return false;
-    }
-
-    private boolean exclusiveParadox(String s, String s1) {
-        if(s != s1 && exclusions.contains(SNT.NumType.valueOf(exclude('-',s.toUpperCase())).ordinal())
-                && exclusions.contains(SNT.NumType.valueOf(exclude('-', s1.toUpperCase())).ordinal())){
-            return true;
-        }
-        return false;
-    }
-
-
-    private boolean isNumber(String s) {
+    private boolean isNotNumber(String s) {
         for(char d : s.toCharArray()){
             if (d < '0' || d > '9') {
                 //throw some error
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     /**

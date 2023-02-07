@@ -1237,6 +1237,44 @@ files:
         }
     }
   learner_created: true
+- name: src/numbers/SpecificNums.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class SpecificNums {
+        public enum NumType{
+            BUZZ(),
+            DUCK("spy"),
+            PALINDROMIC,
+            GAPFUL,
+            SPY("duck"),
+            SQUARE("sunny"),
+            SUNNY("square"),
+            JUMPING,
+            EVEN("odd"),
+            ODD("even"),
+            DEFAULT("buzz");
+
+            private String error;
+            private NumType(){
+                error = "default";
+            }
+
+            NumType(String err) {
+                error = err;
+            }
+
+            public String getConflictingProperty(){
+                return error;
+            }
+
+            public boolean contains(String req) {
+                return this.name().equals(req.toUpperCase());
+            }
+        }
+    }
+  learner_created: true
 - name: src/numbers/SquareDetector.java
   visible: true
   text: |
@@ -1511,55 +1549,11 @@ files:
   learner_created: true
 - name: src/numbers/SNT.java
   visible: true
-  text: |
-    package numbers;
-
-    public class SpecificNums {
-        public enum NumType{
-            BUZZ(),
-            DUCK("spy"),
-            PALINDROMIC,
-            GAPFUL,
-            SPY("duck"),
-            SQUARE("sunny"),
-            SUNNY("square"),
-            JUMPING,
-            EVEN("odd"),
-            ODD("even"),
-            DEFAULT("buzz");
-
-            private String error;
-            private NumType(){
-                error = "default";
-            }
-
-            NumType(String err) {
-                error = err;
-            }
-
-            public String getConflictingProperty(){
-                return error;
-            }
-
-            public boolean contains(String req) {
-                return this.name().equals(req.toUpperCase());
-            }
-        }
-    }
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13205#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Exception in test #1\n\njava.lang.ExceptionInInitializerError\n\tat numbers.SNT$NumType.&lt;clinit&gt;(SNT.java:25)\n\
-    \tat numbers.User.getUserInput(User.java:91)\n\tat numbers.Main.main(Main.java:11)\n\
-    \nPlease find below the output of your program during this failed test.\nNote\
-    \ that the &#39;&gt;&#39; character indicates the beginning of the input line.\n\
-    \n---\n\nWelcome to Amazing Numbers!\n\nSupported requests:\n- enter a natural\
-    \ number to know its properties;\n- enter two natural numbers to obtain the properties\
-    \ of the list:\n  * the first parameter represents a starting number;\n  * the\
-    \ second parameter shows how many consecutive numbers are to be processed;\n-\
-    \ two natural numbers and properties to search for;\n- a property preceded by\
-    \ minus must not be present in numbers;\n- separate the parameters with one space;\n\
-    - enter 0 to exit.\n\nEnter a request:&gt; 0"
-  time: "Sun, 05 Feb 2023 16:15:17 UTC"
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: "Tue, 07 Feb 2023 17:20:01 UTC"
 record: -1
